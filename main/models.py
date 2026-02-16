@@ -7,7 +7,7 @@ class Hero_Section(models.Model):
     hero_image = models.ImageField(upload_to='main/images/')
 
     def __str__(self):
-        return self.hero_text_title
+        return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
     
 
 
