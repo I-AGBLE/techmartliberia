@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Mart Liberia</title>
+
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+    <script src="{% static 'main/js/script.js' %}" defer></script>
+</head>
+
+
+
+
+
+
+<body>
+    <nav>
+        <div class="nav_logo">
+            <a href="{% url 'main:index' %}">
+                <img src="{% static 'main/images/logo.png' %}" alt="Tech Mart Liberia Logo">
+            </a>
+        </div>
+
+        <div class="menu_items">
+            <ul>
+                <li><a href="{% url 'main:index' %}">Home</a></li>
+                <li><a href="{% url 'main:about' %}">About</a></li>
+                <li><a href="{% url 'main:services' %}">Our Services</a></li>
+                <li><a href="{% url 'main:contact' %}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+
+
+
+
+
+    <footer>
+        <center>
+            <a href="">
+                <p>&copy;2026 Built on Agble Technologies. All rights reserved.</p>
+            </a>
+        </center>
+    </footer>
+</body>
+
+</html>
