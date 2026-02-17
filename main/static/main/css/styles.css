@@ -233,7 +233,60 @@ main {
 .service_cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: .5rem;
+  align-items: start; /* prevents vertical stretching shifts */
+}
+
+
+.service_card {
+  border-radius: var(--border_radius);
+  transition: var(--transition);
+  height: 15rem;
+  border: .2px solid var(--text_color);
+  transform-origin: center; /* ensures it scales from center */
+  background: linear-gradient(
+    135deg,
+    #222121,
+    #2c2b2b,
+    #222121
+  );
+  background-size: 200% 200%;
+  animation: smoothShift 6s ease-in-out infinite;
+}
+
+@keyframes smoothShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
+
+.service_card:hover {
+  box-shadow: var(--box_shadow);
+  cursor: pointer;
+  transform: scale(.96);
+  z-index: 200;
+  border: .2px solid #2c2b2b;
+}
+
+.service_card a {
+  display: grid;
+}
+
+.service_title {
+  border-bottom: 1px solid var(--text_color);
+  background-color: var(--nav_bg);
+}
+
+.service_title h3 {
+  padding: .3rem;
+}
+
+.service_desc p {
+  padding: .3rem;
 }
 
 
