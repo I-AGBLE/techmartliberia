@@ -1,6 +1,79 @@
 {% extends "main/layout.html" %}
+{% load static %}
+
 
 {% block content %}
-<h1>services page</h1>
-<p>Your one-stop shop for all things tech in Liberia. Explore our wide range of products,services, and events. Stay connected with us for the latest updates and innovations in technology.</p>
+<div class="services_section">
+    <center>
+        <h1>Our Services</h1>
+    </center>
+
+    {% for hero in hero_section %}
+    <div class="services_text">
+
+        <div class="services_text_title">
+            <h2>
+                {{ hero.hero_text_title|title }}
+            </h2>
+        </div>
+
+        <div class="services_text_body">
+            <p>
+                {{ hero.hero_text_body }}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+    <div class="service_cards">
+        <div class="service_card">
+            <a href="{% url 'main:service_page' %}">
+                <div class="service_title">
+                    <h3>Tech Support</h3>
+                </div>
+
+                <div class="service_desc">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dignissimos? Tempore eum quos
+                        quo! Iusto iste consectetur illum tempore magnam.
+                    </p>
+                </div>
+            </a>
+        </div>
+
+          <div class="service_card">
+            <a href="{% url 'main:service_page' %}">
+                <div class="service_title">
+                    <h3>Tech Support</h3>
+                </div>
+
+                <div class="service_desc">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dignissimos? Tempore eum quos
+                        quo! Iusto iste consectetur illum tempore magnam.
+                    </p>
+                </div>
+            </a>
+        </div>
+
+          <div class="service_card">
+            <a href="{% url 'main:service_page' %}">
+                <div class="service_title">
+                    <h3>Tech Support</h3>
+                </div>
+
+                <div class="service_desc">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dignissimos? Tempore eum quos
+                        quo! Iusto iste consectetur illum tempore magnam.
+                    </p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
 {% endblock %}
