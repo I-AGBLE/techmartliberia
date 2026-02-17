@@ -23,8 +23,10 @@ def services(request):
         'services': Service.objects.all()
     })
     
-def service_page(request):
+def service_page(request, service_id):
+    service = Service.objects.get(pk=service_id)
     return render(request, 'main/service_page.html', {
+        "service": service
     })
 
 def events(request):

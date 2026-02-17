@@ -31,7 +31,7 @@
         {% for service in services %}
 
         <div class="service_card">
-            <a href="{% url 'main:service_page' %}">
+            <a href="{% url 'main:service_page' service.id %}">
                 <div class="service_title">
                     <h3>{{ service.service_title }}</h3>
                 </div>

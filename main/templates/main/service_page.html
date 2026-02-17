@@ -2,7 +2,16 @@
 {% load static %}
 
 {% block content %}
+
     <div class="service_page">
-        <h1>hello service</h1>
+        <center>
+            <h1>{{ service.service_title }}</h1>
+        </center>
+
+        <div class="service_page_desc">
+            <p>
+                {{ service.service_description }}
+            </p>
+        </div>
     </div>
 {% endblock %}
