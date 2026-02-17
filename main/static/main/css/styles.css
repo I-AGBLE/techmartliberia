@@ -28,7 +28,7 @@
   color: var(--text_color);
 
   ::-webkit-scrollbar {
-    width: 3px;
+    width: 1.5px;
   }
 
   /* Prevent text selection and cursor blinking  */
@@ -38,7 +38,7 @@
   -moz-user-select: none; /* For IE/firefox */
 
   ::-webkit-scrollbar-thumb {
-    background: var(--deep_bg);
+    background: #d2d1d1;
     border-radius: 50%;
   }
 
@@ -252,6 +252,7 @@ main {
   );
   background-size: 200% 200%;
   animation: smoothShift 6s ease-in-out infinite;
+  overflow: hidden;
 }
 
 @keyframes smoothShift {
