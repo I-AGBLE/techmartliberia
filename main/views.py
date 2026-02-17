@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from main.models import Hero_Section
+from main.models import Hero_Section, Service
 
 
 
@@ -23,7 +23,9 @@ def services(request):
     })
     
 def service_page(request):
-    return render(request, 'main/service_page.html')
+    return render(request, 'main/service_page.html', {
+        'services': Service.objects.all()
+    })
 
 def events(request):
     return render(request, 'main/events.html')
