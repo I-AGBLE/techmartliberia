@@ -19,12 +19,12 @@ def about(request):
 
 def services(request):
     return render(request, 'main/services.html', {
-        'hero_section': Hero_Section.objects.all()
+        'hero_section': Hero_Section.objects.all(),
+        'services': Service.objects.all()
     })
     
 def service_page(request):
     return render(request, 'main/service_page.html', {
-        'services': Service.objects.all()
     })
 
 def events(request):

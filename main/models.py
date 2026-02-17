@@ -16,5 +16,3 @@ class Service(models.Model):
 
     def __str__(self):
         return f"{self.service_title} - {self.service_description[:50]} ..."
-
-
