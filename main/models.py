@@ -12,7 +12,7 @@ class Hero_Section(models.Model):
 
 class Service(models.Model):
     service_title = models.CharField(max_length=60)
-    service_description = models.TextField(max_length=1000)
+    service_description = models.TextField(max_length=4000)
 
     def __str__(self):
         return f"{self.service_title} - {self.service_description[:50]} ..."

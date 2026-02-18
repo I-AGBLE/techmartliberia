@@ -245,14 +245,15 @@ main {
   height: 15rem;
   border: .2px solid var(--text_color);
   transform-origin: center; /* ensures it scales from center */
+  
   background: linear-gradient(
     135deg,
-    #222121,
-    #2c2b2b,
-    #222121
+    #141414,
+    #302f2f,
+    #1e1c1c
   );
   background-size: 200% 200%;
-  animation: smoothShift 6s ease-in-out infinite;
+  animation: smoothShift 20s ease-in-out infinite;
   overflow: hidden;
 }
 
@@ -270,7 +271,6 @@ main {
   box-shadow: var(--box_shadow);
   cursor: pointer;
   transform: scale(.96);
-  z-index: 200;
   border: .2px solid #2c2b2b;
 }
 
@@ -289,6 +289,38 @@ main {
 
 .service_desc p {
   padding: .3rem;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.service_page {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 5rem;
+  padding: 1rem;
+  border-radius: var(--border_radius);
+  transition: var(--transition);
+    background: linear-gradient(
+    135deg,
+    #141414,
+    #302f2f,
+    #1e1c1c
+  );
+  background-size: 200% 200%;
+  animation: smoothShift 20s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.service_page:hover {
+  box-shadow: var(--box_shadow);
+}
+
+.service_page h2 {
+  text-decoration: underline;
+}
+
+.service_page_description p {
+  text-align: justify;
 }
 
 

@@ -3,15 +3,19 @@
 
 {% block content %}
 
-    <div class="service_page">
-        <center>
-            <h1>{{ service.service_title }}</h1>
-        </center>
+<center>
+    <h1>Our Services</h1>
+</center>
 
-        <div class="service_page_desc">
-            <p>
-                {{ service.service_description }}
-            </p>
-        </div>
+<div class="service_page">
+    <div class="service_page_title">
+        <h2>{{ service.service_title }}</h2>
     </div>
+
+    <div class="service_page_description">
+        <p>
+            {{ service.service_description }}
+        </p>
+    </div>
+</div>
 {% endblock %}
