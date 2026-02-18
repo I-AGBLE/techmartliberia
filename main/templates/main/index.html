@@ -39,7 +39,7 @@
         {% for member in team_members %}
         <article class="team_member">
             <div class="team_member-image">
-                <img src="{% static 'main/images/profile.png' %}">
+                <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture">
             </div>
             <div class="team_member-info">
                 <h3>{{ member.name }}</h3>
@@ -47,13 +47,13 @@
             </div>
             <div class="team_member-socials">
                 <a href="{{ member.instagram_url }}" target="_blank">
-                    <img src="{%static 'main/images/instagram.png'%}" alt="Instagram Icon">
+                    <img src="{%static 'main/images/instagram.png'%}" alt="Instagram">
                 </a>
                 <a href="{{ member.twitter_url }}" target="_blank">
-                    <img src="{%static 'main/images/x.png'%}" alt="X Icon">
+                    <img src="{%static 'main/images/x.png'%}" alt="X">
                 </a>
                 <a href="{{ member.linkedin_url }}" target="_blank">
-                    <img src="{%static 'main/images/linkedin.png'%}" alt="LinkedIn Icon">
+                    <img src="{%static 'main/images/linkedin.png'%}" alt="LinkedIn">
                 </a>
             </div>
         </article>
