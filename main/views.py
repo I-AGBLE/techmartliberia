@@ -1,14 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from main.models import Hero_Section, Service
+from main.models import Hero_Section, Service, Team_Member
 
 
 
 # Create your views here.
 def index(request):
     return render(request, 'main/index.html', {
-        'hero_section': Hero_Section.objects.all()
+        'hero_section': Hero_Section.objects.all(),
+        'team_members': Team_Member.objects.all()
     })
 
 def contact(request):

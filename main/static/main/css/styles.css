@@ -415,6 +415,7 @@ main {
 
 .team_member-socials a img:hover {
   box-shadow: var(--box_shadow);
+  transform: scale(1.4);
 }
 
 footer {
