@@ -234,7 +234,7 @@ main {
 .service_cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap: 2rem;
   align-items: start; /* prevents vertical stretching shifts */
 }
 
@@ -242,7 +242,7 @@ main {
   border-radius: var(--border_radius);
   transition: var(--transition);
   height: 15rem;
-  border: 0.2px solid var(--text_color);
+  border: 0.1px solid rgb(71, 71, 71);
   transform-origin: center; /* ensures it scales from center */
 
   background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
@@ -275,7 +275,7 @@ main {
 }
 
 .service_title {
-  border-bottom: 1px solid var(--text_color);
+  border-bottom: 0.1px solid rgb(71, 71, 71);
   background-color: var(--nav_bg);
 }
 
