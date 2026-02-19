@@ -501,11 +501,19 @@ form textarea {
   font-size: .9rem;
   border-radius: var(--border_radius);
   margin-bottom: .6rem;
+  transition: var(--transition);
 }
 
 .contact-form textarea {
   resize: none;
   height: 12rem;
+}
+
+.contact-form form input:focus,
+.contact-form form textarea:focus {
+  background: var(--deep_bg);
+ border: 0.1px solid rgb(71, 71, 71);  padding: 14px;
+ transform: translateX(.4rem);
 }
 
 .contact-form .submit {
