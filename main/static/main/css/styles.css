@@ -331,6 +331,10 @@ main {
   gap: 0.5rem;
 }
 
+.team_title  h2 {
+  margin-bottom: 1rem;
+}
+
 .team_member {
   padding: 1rem;
   border: 1px solid transparent;
@@ -362,10 +366,12 @@ main {
   height: 100%;
   width: 100%;
   border-radius: var(--border_radius);
+  transition: var(--transition);
 }
 
 .team_member:hover img {
   filter: saturate(0);
+  transform: scale(1.1);
 }
 
 .team_member-info * {

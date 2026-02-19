@@ -12,6 +12,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-admin.site.site_header = "TechMart Liberia Admin"
-admin.site.site_title = "TechMartLibera Administrator's Portal"
-admin.site.index_title = "TechMart Liberia"
+admin.site.site_header = "TechMart Liberia"
+admin.site.site_title = "TechMartLibera"
+admin.site.index_title = "TechMart Liberia Administrator's Portal"

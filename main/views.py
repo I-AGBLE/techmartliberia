@@ -4,7 +4,6 @@ from django.shortcuts import render
 from main.models import Hero_Section, Service, Team_Member
 
 
-
 # Create your views here.
 def index(request):
     return render(request, 'main/index.html', {

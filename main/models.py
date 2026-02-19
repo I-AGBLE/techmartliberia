@@ -8,7 +8,7 @@ class Hero_Section(models.Model):
 
     def __str__(self):
         return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
-    
+
 
 class Service(models.Model):
     service_title = models.CharField(max_length=60)
