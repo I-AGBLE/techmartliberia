@@ -52,6 +52,7 @@
   --deep_bg: #0b0b0b;
   --color_gold: #f8c641;
   --text_color: #ffffff;
+  --text_color_variant: rgb(71, 71, 71);
   --color_danger: #f03333;
 
   --nav_bg: rgba(0, 0, 0, 0.2); /* adds transparency so blur can show through */
@@ -315,10 +316,13 @@ main {
 }
 
 .team {
-  background: var(--nav_bg);
   margin: 1rem auto;
   border-radius: var(--border_radius);
-  padding: 3rem 3rem;
+  padding: 3rem 1rem;
+
+    background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
+  background-size: 200% 200%;
+  animation: smoothShift 20s ease-in-out infinite;
 }
 
 .team:hover {
@@ -336,14 +340,13 @@ main {
 }
 
 .team_member {
-  padding: 1rem;
+  padding: .5rem;
   border: 1px solid transparent;
   border-radius: var(--border_radius);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
-  background-size: 200% 200%;
+  background-color: var(--default_bg);
   animation: smoothShift 20s ease-in-out infinite;
   overflow: hidden;
 }
@@ -351,7 +354,7 @@ main {
 .team_member:hover {
   background: transparent;
   border-color: var(--nav_bg);
-  border: 1px solid var(--text_color);
+  border: 1px solid var(--text_color_variant);
 }
 
 .team_member-image {
@@ -371,7 +374,6 @@ main {
 
 .team_member:hover img {
   filter: saturate(0);
-  transform: scale(1.1);
 }
 
 .team_member-info * {
@@ -392,7 +394,7 @@ main {
   display: flex;
   flex-direction: column;
   border-radius: 1rem 0 0 1rem;
-  box-shadow: -2rem 0 2rem rgb(0, 0, 0, 0.3);
+  box-shadow: var(--box_shadow);
   transition: var(--transition);
   background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
   background-size: 200% 200%;
@@ -411,17 +413,19 @@ main {
 }
 
 .team_member-socials a i {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   background-color: var(--color_gold);
   color: var(--deep_bg);
-  padding: 0.1rem;
+  padding: 0.5rem;
   border-radius: 0.2rem;
   transition: var(--transition);
 }
 
 .team_member-socials a i:hover {
   box-shadow: var(--box_shadow);
-  transform: scale(1.4);
+  transform: scale(0.9);
+  color: var(--color_gold);
+  background-color: var(--text_color);
 }
 
 .contact {
@@ -442,13 +446,13 @@ main {
 }
 
 .contact_text h4 {
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   font-weight: 600;
 }
 
 .contact_text p {
   margin-bottom: 30px;
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .list {
@@ -461,7 +465,7 @@ main {
 
 .list li a {
   display: block;
-  font-size: .9rem;
+  font-size: 0.9rem;
   transition: var(--transition);
 }
 
@@ -486,7 +490,7 @@ main {
 .contact_icons i:hover {
   background: var(--text_color);
   color: var(--color_gold);
-  transform: scale(.9);
+  transform: scale(0.9);
   box-shadow: var(--box_shadow);
 }
 
@@ -498,9 +502,9 @@ form textarea {
   color: var(--text_color);
   border: none;
   outline: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
   border-radius: var(--border_radius);
-  margin-bottom: .6rem;
+  margin-bottom: 0.6rem;
   transition: var(--transition);
 }
 
@@ -512,13 +516,14 @@ form textarea {
 .contact-form form input:focus,
 .contact-form form textarea:focus {
   background: var(--deep_bg);
- border: 0.1px solid rgb(71, 71, 71);  padding: 14px;
- transform: translateX(.4rem);
+  border: 0.1px solid var(--text_color_variant);
+  padding: 14px;
+  transform: translateX(0.4rem);
 }
 
 .contact-form .submit {
   display: inline-block;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 900;
   background: var(--color_gold);
   color: var(--deep_bg);
