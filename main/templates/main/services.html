@@ -4,17 +4,15 @@
 
 {% block content %}
 <div class="services_section">
-    <center>
-        <h1>Our Services</h1>
-    </center>
+
 
     {% for hero in hero_section %}
     <div class="services_text">
 
         <div class="services_text_title">
-            <h2>
+            <h1>
                 {{ hero.hero_text_title|title }}
-            </h2>
+            </h1>
         </div>
 
         <div class="services_text_body">
@@ -26,8 +24,12 @@
     {% endfor %}
 
 
+    <center>
+        <h2>Our <span>Services</span> </h2>
+    </center>
 
     <div class="service_cards">
+
         {% for service in services %}
 
         <div class="service_card">

@@ -110,6 +110,10 @@ nav {
   transition: var(--transition);
 }
 
+span {
+  color: var(--color_gold);
+}
+
 nav:hover {
   box-shadow: var(--box_shadow);
 }
@@ -225,7 +229,13 @@ main {
 
 .services_section {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
+  margin-top: 3rem;
+  background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
+  background-size: 200% 200%;
+  animation: smoothShift 20s ease-in-out infinite;
+  padding: 3rem 1rem;
+  border-radius: var(--border_radius);
 }
 .services_text {
   display: grid;
@@ -235,21 +245,17 @@ main {
 .service_cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1rem;
   align-items: start; /* prevents vertical stretching shifts */
 }
 
 .service_card {
   border-radius: var(--border_radius);
   transition: var(--transition);
-  height: 15rem;
+  height: 10rem;
   border: 0.1px solid rgb(71, 71, 71);
   transform-origin: center; /* ensures it scales from center */
-
-  background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
-  background-size: 200% 200%;
-  animation: smoothShift 20s ease-in-out infinite;
-  overflow: hidden;
+  background-color: var(--text_color_variant);
 }
 
 @keyframes smoothShift {
@@ -265,10 +271,10 @@ main {
 }
 
 .service_card:hover {
-  box-shadow: var(--box_shadow);
   cursor: pointer;
   transform: scale(0.96);
-  border: 0.2px solid #2c2b2b;
+  border: 0.2px solid var(--text_color_variant);
+  background-color: var(--nav_bg);
 }
 
 .service_card a {
@@ -278,7 +284,25 @@ main {
 .service_title {
   border-bottom: 0.1px solid rgb(71, 71, 71);
   background-color: var(--nav_bg);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.3rem .3rem;
 }
+
+.service_icon {
+  width: 2.5rem;
+  height: 2.1rem;
+  overflow: hidden;
+}
+
+.service_icon img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1);
+  transition: var(--transition);
+}
+
 
 .service_title h3 {
   padding: 0.3rem;
