@@ -29,6 +29,37 @@
 </div>
 
 
+<div class="services_section">
+    <center>
+        <div class="services_title">
+            <h2 class="gradient_text">Our Services</h2>
+        </div>
+    </center>
+
+    <div class=" services_container">
+        {% for service in services %}
+        <article class="service">
+            <div class="service_info">
+                <h3>{{ service.service_title }}</h3>
+                <p>{{ service.service_description|truncatechars:150 }}</p>
+            </div>
+
+            <div class="service_link">
+                <a href="{% url 'main:service_page' service.id %}">Learn More</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% if services|length == 0 %}
+    <div class="empty_notification">
+        <center>
+            <p>No services available.</p>
+        </center>
+    </div>
+    {% endif %}
+</div>
+
+
 <div class="team">
 
     <center>
@@ -48,7 +79,7 @@
                 <h3>{{ member.name }}</h3>
                 <p>{{ member.position }}</p>
             </div>
-            
+
             <div class="team_member-socials">
                 <a href="{{ member.instagram_url }}" target="_blank">
                     <i class="fa-brands fa-square-instagram"></i>

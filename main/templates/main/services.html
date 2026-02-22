@@ -33,6 +33,13 @@
         <div class="service_card">
             <a href="{% url 'main:service_page' service.id %}">
                 <div class="service_title">
+                    <div class="service_icon">
+                        {% if service.service_icon %}
+                        <img src="{{ service.service_icon.url }}" alt="{{ service.service_title }} Icon">
+                        {% else %}
+                        <img src="{% static 'main/images/default_service_icon.png' %}" alt="Default Service Icon">
+                        {% endif %}
+                    </div>
                     <h3>{{ service.service_title }}</h3>
                 </div>
 

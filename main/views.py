@@ -8,7 +8,8 @@ from main.models import Hero_Section, Service, Team_Member
 def index(request):
     return render(request, 'main/index.html', {
         'hero_section': Hero_Section.objects.all(),
-        'team_members': Team_Member.objects.all()
+        'team_members': Team_Member.objects.all(),
+        'services': Service.objects.all()
     })
 
 def contact(request):
