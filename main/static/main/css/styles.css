@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
-.material-symbols-outlined {
-  font-variation-settings:
-    "FILL" 0,
-    "wght" 200,
-    "GRAD"-25,
-    "opsz" 20;
-}
 
 * {
   font-family: "Josefin Slab", serif;
@@ -57,28 +50,24 @@
   --nav_bg: rgba(0, 0, 0, 0.2); /* adds transparency so blur can show through */
   --transition: all 300ms ease;
   --box_shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.4);
-  --opacity: 0.9;
   --border_radius: 0.5rem;
 }
 
 h1 {
-  font-size: 2.1rem;
-  font-weight: 650;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.4rem;
 }
 
 h3 {
   font-size: 1.2rem;
-  font-weight: 600;
 }
 
 h4 {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
 }
 
 p {
@@ -266,6 +255,7 @@ main {
   display: grid;
   gap: 2rem;
   margin-top: 3rem;
+  
   background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
   background-size: 200% 200%;
   animation: smoothShift 20s ease-in-out infinite;
@@ -316,7 +306,6 @@ main {
 }
 
 .service:hover {
-  transform: scale(1.01);
   box-shadow: var(--box_shadow);
 }
 
@@ -346,7 +335,6 @@ main {
 
 .service_link a:hover {
   color: var(--deep_bg);
-  transform: translateX(0.4rem);
   background-color: var(--color_gold);
   padding: 0.2rem 0.4rem;
   border-radius: var(--border_radius);
@@ -582,7 +570,6 @@ main {
 
 .contact_text p {
   margin-bottom: 30px;
-  font-size: 0.8rem;
 }
 
 .list {
