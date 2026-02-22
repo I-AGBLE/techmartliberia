@@ -1,6 +1,50 @@
 {% extends "main/layout.html" %}
+{% load static %}
+
 
 {% block content %}
-<h1>about page</h1>
-<p>Your one-stop shop for all things tech in Liberia. Explore our wide range of products,services, and events. Stay connected with us for the latest updates and innovations in technology.</p>
-{% endblock %}
+
+<div class="why_us_section">
+    <div class="why_us_images">
+        <div class="why_us_images_top">
+            <img src="{% static 'main/images/whyus1.jpeg' %}" id="small" alt="Why Us Image 1">
+            <img src="{% static 'main/images/whyus2.jpeg' %}" alt="Why Us Image 2">
+        </div>
+
+        <div class="why_us_images_bottom">
+            <img src="{% static 'main/images/whyus3.jpeg' %}" alt="Why Us Image 3">
+            <img src="{% static 'main/images/whyus4.jpeg' %}" id="small" alt="Why Us Image 4">
+        </div>
+    </div>
+
+    <div class="why_us_texts">
+        <div class="why_us_title">
+            <h2>Why <span> Choose Us?</span></h2>
+        </div>
+        <div class="why_us">
+            <div class="why_us_icon">
+                <img src="{% static 'main/images/default_service_icon.png' %}" alt="Why Us Icon 1">
+            </div>
+
+            <div class="why_us_text">
+                <div class="why_us_title">
+                    <h3>Proven Expertise</h3>
+                </div>
+                <div class="why_us_desc">
+                    <p>
+                        Our team brings deep technical knowledge and real-world experience across multiple industries.
+                        We design and deliver robust, scalable solutions that solve complex challenges and position your
+                        business for long-term success.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero_link">
+            <a href="{% url 'main:services' %}">Explore Our Services</a>
+        </div>
+    </div>
+
+
+
+    {% endblock %}

@@ -3,16 +3,16 @@
 
 
 {% block content %}
-<div class="services_section">
+
 
 
     {% for hero in hero_section %}
     <div class="services_text">
 
         <div class="services_text_title">
-            <h1>
-                {{ hero.hero_text_title|title }}
-            </h1>
+            <h2>
+               <span>TechMart Liberia: </span> {{ hero.hero_text_title|title }}
+            </h2>
         </div>
 
         <div class="services_text_body">
@@ -24,9 +24,8 @@
     {% endfor %}
 
 
-    <center>
-        <h2>Our <span>Services</span> </h2>
-    </center>
+<div class="services_section">
+        <h1>Our <span>Services</span> </h1>
 
     <div class="service_cards">
 

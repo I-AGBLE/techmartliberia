@@ -45,3 +45,12 @@ class Team_Member(models.Model):
 
 
 
+class why_us(models.Model):
+    why_us_icon = models.ImageField(upload_to=image_upload_path)
+    why_us_title = models.TextField(max_length=50)
+    why_us_desc = models.TextField(max_length=500)
+
+    def __str__(self):
+        return f"{self.why_us_title} - {self.why_us_desc[:50]} ..."
+
+
