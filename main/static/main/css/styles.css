@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
 
-
 * {
   font-family: "Josefin Slab", serif;
   font-optical-sizing: auto;
@@ -255,7 +254,7 @@ main {
   display: grid;
   gap: 2rem;
   margin-top: 3rem;
-  
+
   background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
   background-size: 200% 200%;
   animation: smoothShift 20s ease-in-out infinite;
@@ -620,7 +619,6 @@ form textarea {
   color: var(--text_color);
   border: none;
   outline: none;
-  font-size: 0.9rem;
   border-radius: var(--border_radius);
   margin-bottom: 0.6rem;
   transition: var(--transition);
@@ -633,10 +631,8 @@ form textarea {
 
 .contact-form form input:focus,
 .contact-form form textarea:focus {
-  background: var(--deep_bg);
+  background: var(--nav_bg);
   border: 0.1px solid var(--text_color_variant);
-  padding: 14px;
-  transform: translateX(0.4rem);
 }
 
 .contact-form .submit {
@@ -719,6 +715,67 @@ form textarea {
   display: grid;
   gap: 0.5rem;
 }
+
+/* --------------------------------- Footer Page Styles ----------------------------------------------- */
+.form_field {
+  margin: 5rem 6rem;
+  background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
+  background-size: 200% 200%;
+  animation: smoothShift 20s ease-in-out infinite;
+  padding: 3rem;
+  border-radius: var(--border_radius);
+  display: grid;
+  gap: 2rem;
+}
+
+.form_field:hover {
+  box-shadow: var(--box_shadow);
+  border: 1px solid var(--text_color_variant);
+}
+
+.form_title {
+  display: grid;
+  gap: 1rem;
+}
+
+.form_field form {
+  display: grid;
+  gap: 0.5rem;
+  width: 70%;
+}
+
+.form_field form input {
+  width: 100%;
+  padding: 14px;
+  background: var(--default_bg);
+  color: var(--text_color);
+  border: none;
+  outline: none;
+  border-radius: var(--border_radius);
+  transition: var(--transition);
+}
+
+.form_field form input:focus {
+  background: var(--nav_bg);
+  border: 0.1px solid var(--text_color_variant);
+}
+
+.form_field form .submit {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 900;
+  background: var(--color_gold);
+  color: var(--deep_bg);
+  width: 10rem;
+  transition: var(--transition);
+  margin-top: 1rem;
+}
+
+.form_field form .submit:hover {
+  cursor: pointer;
+  background-color: var(--text_color);
+}
+
 
 /* --------------------------------- Footer Page Styles ----------------------------------------------- */
 footer {
