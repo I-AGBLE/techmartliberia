@@ -99,10 +99,26 @@ def user_in(request):
             login(request, user)
             request.session['login_attempts'] = 0  # Reset on successful login
             request.session['login_lockout_time'] = None
-            return redirect('main:index')  # Redirect to homepage or dashboard
+            return redirect('main:user_dash')  # Redirect to homepage or dashboard
         else:
             request.session['login_attempts'] = attempts + 1
             if request.session['login_attempts'] >= max_attempts:
                 request.session['login_lockout_time'] = now
             return render(request, 'main/user_in.html', {'error': 'Invalid username or password'})
     return render(request, 'main/user_in.html')
+
+
+
+
+# -------------------------------  Login Page View ---------------------------------- #
+@login_required
+def user_dash(request):
+    return render(request, 'main/user_dash.html', {
+        'hero_section': Hero_Section.objects.all(),
+        'team_members': Team_Member.objects.all(),
+        'services': Service.objects.all(),
+        'about_hero': About_Us_Hero.objects.all(),
+        'why_us': why_us.objects.all(),
+    })
+
+

@@ -1,0 +1,141 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="dashboard">
+    <div class="dashboard_title">
+        <h1>Welcome to the TechMart Liberia administrator dashboard, {{ user.username }}!</h1>
+        <p>
+            Here you can manage your services, view contact messages, and update your website content.
+            Use the navigation menu to access different sections of the dashboard.
+            If you have any questions or need assistance, please
+            <span> contact developer</span>.
+        </p>
+    </div>
+
+    {% for hero in hero_section %}
+    <div class="admin_hero_section">
+        <div class="admin_hero_section_image">
+            <img src="{{ hero.hero_image.url }}" alt="Admin Dashboard Hero Image">
+        </div>
+
+        <div class="admin_hero_text">
+            <span>Hero Section Content:</span>
+            <h2>{{ hero.hero_text_title }}</h2>
+            <p>{{ hero.hero_text_body|truncatewords:20 }}</p>
+        </div>
+
+        <div class="dashboard_links">
+            <a href="">Edit Hero Section</a>
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+
+    <div class="admin_services">
+        <div class="admin_services_title">
+            <h2>Manage Your <span> Services</span></h2>
+        </div>
+
+        <div class="admin_services_list">
+            {% for service in services %}
+            <div class="admin_service_item">
+                <div class="admin_service_image">
+                    <img src="{{ service.service_image.url }}" alt="{{ service.service_title }} Image">
+                </div>
+                <div class="admin_service_info">
+                    <h3>{{ service.service_title }}</h3>
+                    <p>{{ service.service_description|truncatewords:15 }}</p>
+                </div>
+                <div class="dashboard_links">
+                    <a href="">Edit Service</a>
+                    <a href="">Add Service</a>
+                    <a href="">Delete Service</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+    <div class="admin_about_hero">
+        <div class="admin_about_hero_title">
+            <h2>Manage Your <span> About Us Hero Section</span></h2>
+        </div>
+
+        {% for about in about_hero %}
+        <div class="admin_about_hero_item">
+            <div class="admin_about_hero_image">
+                <img src="{{ about.about_hero_image.url }}" alt="Admin About Us Hero Image">
+            </div>
+            <div class="admin_about_hero_info">
+                <h3>{{ about.about_hero_text_title }}</h3>
+                <p>{{ about.about_hero_text_body|truncatewords:15 }}</p>
+            </div>
+            <div class="dashboard_links">
+                <a href="">Edit About Us Hero Section</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+    <div class="admin_team_members">
+        <div class="admin_team_members_title">
+            <h2>Manage Your <span> Team Members</span></h2>
+        </div>
+
+        <div class="admin_team_members_container">
+
+        {% for member in team_members %}
+            <div class="admin_team_member_item">
+                <div class="admin_team_member_image">
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture">
+                </div>
+                <div class="admin_team_member_info">
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.role }}</p>
+                </div>
+                <div class="dashboard_links">
+                    <a href="">Edit Team Member</a>
+                    <a href="">Add Team Member</a>
+                    <a href="">Delete Team Member</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+
+
+    
+    <div class="admin_why_us">
+        <div class="admin_why_us_title">
+            <h2>Manage Your <span> Why Choose Us Section</span></h2>
+        </div>
+
+
+        <div class="admin_why_us_container">
+     {% for why in why_us %}
+        <div class="admin_why_us_item">
+            <div class="admin_why_us_info">
+                <h3>{{ why.why_us_title }}</h3>
+                <p>{{ why.why_us_desc|truncatewords:15 }}</p>
+            </div>
+            <div class="dashboard_links">
+                <a href="">Edit</a>
+                <a href="">Add</a>
+                <a href="">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
