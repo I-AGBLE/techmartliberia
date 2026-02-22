@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<center>
-    <h1>Our Services</h1>
-</center>
-
 <div class="service_page">
     <div class="service_page_title">
-        <h2>{{ service.service_title }}</h2>
+        <h1>{{ service.service_title }}</h1>
+    </div>
+
+    <div class="service_page_image">
+        <img src="{{ service.service_image.url }}" alt="{{ service.service_title }} Image">
     </div>
 
     <div class="service_page_description">
