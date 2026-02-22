@@ -38,7 +38,7 @@
   -moz-user-select: none; /* For IE/firefox */
 
   ::-webkit-scrollbar-thumb {
-    background: #d2d1d1;
+    background: var(--text_color);
     border-radius: 50%;
   }
 
@@ -54,13 +54,10 @@
   --text_color: #ffffff;
   --text_color_variant: rgb(71, 71, 71);
   --color_danger: #f03333;
-
   --nav_bg: rgba(0, 0, 0, 0.2); /* adds transparency so blur can show through */
-
   --transition: all 300ms ease;
   --box_shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.4);
   --opacity: 0.9;
-
   --border_radius: 0.5rem;
 }
 
@@ -92,13 +89,6 @@ body {
   background-color: var(--default_bg);
 }
 
-
-
-
-
-
-
-
 /* --------------------------------- Nav Section Styles ----------------------------------------------- */
 nav {
   background-color: var(--nav_bg);
@@ -112,7 +102,6 @@ nav {
   height: 2.9rem;
   margin: 0;
   padding: 0 10rem;
-
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
@@ -183,7 +172,6 @@ main {
   margin-bottom: 5rem;
 }
 
-
 /* --------------------------------- Index Page Styles ----------------------------------------------- */
 .hero_section {
   position: relative;
@@ -204,19 +192,19 @@ main {
   height: 100%;
   pointer-events: none;
   /* Blend more at the bottom, subtle on left/right */
-  background: 
+  background:
     linear-gradient(
       to bottom,
-      rgba(34,33,33,0.1) 0%,
-      rgba(34,33,33,0.50) 50%,
-      rgba(34,33,33,1) 100%
+      rgba(34, 33, 33, 0.1) 0%,
+      rgba(34, 33, 33, 0.5) 50%,
+      rgba(34, 33, 33, 1) 100%
     ),
     linear-gradient(
       to left,
-      rgba(34,33,33,1) 0%,
-      rgba(34,33,33,0.7) 20%,
-      rgba(34,33,33,0.25) 80%,
-      rgba(34,33,33,1) 100%
+      rgba(34, 33, 33, 1) 0%,
+      rgba(34, 33, 33, 0.7) 20%,
+      rgba(34, 33, 33, 0.25) 80%,
+      rgba(34, 33, 33, 1) 100%
     );
   z-index: 1;
 }
@@ -225,8 +213,6 @@ main {
   position: relative;
   z-index: 2;
 }
-
-
 
 .hero_text {
   display: grid;
@@ -254,17 +240,26 @@ main {
   border-radius: var(--border_radius);
 }
 
+/* --------------------------------- Catch Styles ----------------------------------------------- */
+.catchwords ul {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  justify-content: center;
+  align-items: center;
+}
 
+.catchwords ul li {
+  color: var(--text_color_variant);
+  padding: 0.3rem 0.5rem;
+  transition: var(--transition);
+  font-weight: 900;
+}
 
-
-
-
-
-
-
-
-
-
+.catchwords ul li:hover {
+  box-shadow: var(--box_shadow);
+  color: var(--color_gold);
+}
 
 /* --------------------------------- Services Page Styles ----------------------------------------------- */
 .services_section {
@@ -278,7 +273,9 @@ main {
   border-radius: var(--border_radius);
   margin-bottom: 5rem;
 }
-.services_text, .contact_text {
+
+.services_text,
+.contact_text {
   display: grid;
   gap: 0.5rem;
   margin-top: 3rem;
@@ -291,7 +288,8 @@ main {
   align-items: start; /* prevents vertical stretching shifts */
 }
 
-.service_card, .service {
+.service_card,
+.service {
   border-radius: var(--border_radius);
   transition: var(--transition);
   height: 10rem;
@@ -309,16 +307,17 @@ main {
   gap: 1rem;
   overflow: hidden;
 }
+
 .service {
- height: 8rem;
- display: flex;
- align-items: flex-start;
- overflow: hidden;
+  height: 8rem;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
 }
 
 .service:hover {
-transform: scale(1.01);
-box-shadow: var(--box_shadow);
+  transform: scale(1.01);
+  box-shadow: var(--box_shadow);
 }
 
 .service_info {
@@ -329,7 +328,7 @@ box-shadow: var(--box_shadow);
   width: 25rem;
   height: 8rem;
   overflow: hidden;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .service_image img {
@@ -349,7 +348,7 @@ box-shadow: var(--box_shadow);
   color: var(--deep_bg);
   transform: translateX(0.4rem);
   background-color: var(--color_gold);
-  padding: .2rem .4rem;
+  padding: 0.2rem 0.4rem;
   border-radius: var(--border_radius);
   font-weight: 900;
 }
@@ -383,7 +382,7 @@ box-shadow: var(--box_shadow);
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  padding: 0.3rem .3rem;
+  padding: 0.3rem 0.3rem;
   justify-content: flex-start;
 }
 
@@ -399,7 +398,6 @@ box-shadow: var(--box_shadow);
   filter: brightness(0) invert(1);
   transition: var(--transition);
 }
-
 
 .service_title h3 {
   padding: 0.3rem;
@@ -442,24 +440,16 @@ box-shadow: var(--box_shadow);
   object-fit: cover;
 }
 
-
 .service_page_description p {
   text-align: justify;
 }
-
-
-
-
-
-
 
 /* --------------------------------- Meet Our Team Styles ----------------------------------------------- */
 .team {
   margin: 1rem auto;
   border-radius: var(--border_radius);
   padding: 3rem 1rem;
-
-    background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
+  background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
   background-size: 200% 200%;
   animation: smoothShift 20s ease-in-out infinite;
 }
@@ -479,7 +469,7 @@ box-shadow: var(--box_shadow);
 }
 
 .team_member {
-  padding: .5rem;
+  padding: 0.5rem;
   border: 1px solid transparent;
   border-radius: var(--border_radius);
   transition: var(--transition);
@@ -567,11 +557,6 @@ box-shadow: var(--box_shadow);
   background-color: var(--text_color);
 }
 
-
-
-
-
-
 /* --------------------------------- Contact Page Styles ----------------------------------------------- */
 .contact {
   background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
@@ -583,7 +568,7 @@ box-shadow: var(--box_shadow);
   gap: 1.5rem;
   padding: 2rem;
   border-radius: var(--border_radius);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .contact:hover {
@@ -615,7 +600,7 @@ box-shadow: var(--box_shadow);
 }
 
 .list li a:hover {
-  transform: translateX(.4rem);
+  transform: translateX(0.4rem);
   color: var(--color_gold);
 }
 
@@ -682,7 +667,6 @@ form textarea {
   background-color: var(--text_color);
 }
 
-
 /* --------------------------------- About Page Styles ----------------------------------------------- */
 .why_us_section {
   display: grid;
@@ -693,17 +677,19 @@ form textarea {
 
 .why_us_images {
   display: grid;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
-.why_us_images_top, .why_us_images_bottom {
+.why_us_images_top,
+.why_us_images_bottom {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   width: 100%;
   align-items: flex-start;
 }
 
-.why_us_images_top img, .why_us_images_bottom img {
+.why_us_images_top img,
+.why_us_images_bottom img {
   width: 100%;
   height: 8rem;
   object-fit: cover;
@@ -724,7 +710,7 @@ form textarea {
 
 .why_us {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -740,23 +726,12 @@ form textarea {
   filter: brightness(0) invert(1);
   transition: var(--transition);
   object-fit: cover;
-
 }
 
 .why_us_text {
   display: grid;
   gap: 0.5rem;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* --------------------------------- Footer Page Styles ----------------------------------------------- */
 footer {
@@ -768,7 +743,6 @@ footer {
   width: 100%;
   z-index: 200;
   height: 2.5rem;
-
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
