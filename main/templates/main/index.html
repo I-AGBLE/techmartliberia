@@ -3,22 +3,19 @@
 
 
 {% block content %}
-<div class="hero_section">
-    {% for hero in hero_section %}
-    <div class="hero_image">
-        <img src="{{ hero.hero_image.url }}" alt="Tech Mart Liberia Hero Image">
-    </div>
 
+{% if hero_section %}
+<div class="hero_section" style="background: url('{{ hero_section.0.hero_image.url }}') center center/cover no-repeat;">
+    {% for hero in hero_section %}
     <div class="hero_text">
         <div class="hero_text_title">
             <h1>
-                {{ hero.hero_text_title|title }}
+               <span>TechMart Liberia: </span> {{ hero.hero_text_title|title }}
             </h1>
         </div>
-
         <div class="hero_text_body">
             <p>
-                {{ hero.hero_text_body|truncatechars:701 }}
+                {{ hero.hero_text_body|truncatechars:500 }}
             </p>
         </div>
         <div class="hero_link">
@@ -27,29 +24,50 @@
     </div>
     {% endfor %}
 </div>
+{% endif %}
 
 
 <div class="services_section">
-    <center>
-        <div class="services_title">
-            <h2 class="gradient_text">Our Services</h2>
-        </div>
-    </center>
+    <div class="services_title">
+        <h2 class="gradient_text">Our <span>Core Services</span></h2>
+    </div>
 
     <div class=" services_container">
-        {% for service in services %}
-        <article class="service">
+        {% for service in services|slice:':4' %}
+        <div class="service">
+            <div class="service_image">
+                <img src="{{ service.service_image.url }}" alt="{{ service.service_title }} Image">
+            </div>
             <div class="service_info">
-                <h3>{{ service.service_title }}</h3>
-                <p>{{ service.service_description|truncatechars:150 }}</p>
+                <div class="service_title">
+                    <div class="service_icon">
+                        {% if service.service_icon %}
+                        <img src="{{ service.service_icon.url }}" alt="{{ service.service_title }} Icon">
+                        {% else %}
+                        <img src="{% static 'main/images/default_service_icon.png' %}" alt="Default Service Icon">
+                        {% endif %}
+                    </div>
+                    <h3>{{ service.service_title }}</h3>
+                </div>
+
+                <div class="service_desc">
+                    <p>
+                        {{ service.service_description|truncatechars:150 }}
+                    </p>
+                </div>
+
+                <div class="service_link">
+                    <a href="{% url 'main:service_page' service.id %}">Read More</a>
+                </div>
             </div>
 
-            <div class="service_link">
-                <a href="{% url 'main:service_page' service.id %}">Learn More</a>
-            </div>
-        </article>
+        </div>
         {% endfor %}
     </div>
+
+            <div class="hero_link">
+            <a href="{% url 'main:services' %}">Find More Services</a>
+        </div>
     {% if services|length == 0 %}
     <div class="empty_notification">
         <center>
@@ -62,11 +80,9 @@
 
 <div class="team">
 
-    <center>
         <div class="team_title">
             <h2>Meet <span>Our Team</span></h2>
         </div>
-    </center>
 
     <div class="container team_container">
         {% for member in team_members %}
