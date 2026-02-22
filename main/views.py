@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'main/index.html', {
         'hero_section': Hero_Section.objects.all(),
         'team_members': Team_Member.objects.all(),
-        'services': Service.objects.all()
+        'services': Service.objects.all(),
     })
 
 def contact(request):
@@ -39,3 +39,5 @@ def events(request):
 
 def meet_our_team(request):
     return render(request, 'main/meet_our_team.html')
+
+

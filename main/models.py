@@ -13,6 +13,10 @@ def image_upload_path(instance, filename):
     new_filename = f"{timestamp}_{filename}"
     # Return the path
     return os.path.join('images', new_filename)
+
+
+
+
 class Hero_Section(models.Model):
     hero_text_title = models.CharField(max_length=60)
     hero_text_body = models.TextField(max_length=300)
@@ -22,6 +26,8 @@ class Hero_Section(models.Model):
         return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
 
 
+
+
 class About_Us_Hero(models.Model):
     about_hero_text_title = models.CharField(max_length=60)
     about_hero_text_body = models.TextField(max_length=300)
@@ -29,6 +35,8 @@ class About_Us_Hero(models.Model):
 
     def __str__(self):
         return f"{self.about_hero_text_title} - {self.about_hero_text_body[:50]} ..."
+
+
 
 
 class Service(models.Model):
