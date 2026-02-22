@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from main.models import Hero_Section, Service, Team_Member, why_us
+from main.models import About_Us_Hero, Hero_Section, Service, Team_Member, why_us
 
 
 # Create your views here.
@@ -17,7 +17,9 @@ def contact(request):
 
 def about(request):
     return render(request, 'main/about.html', {
-        'why_us': why_us.objects.all()
+        'why_us': why_us.objects.all(),
+        'team_members': Team_Member.objects.all(),
+        'about_hero': About_Us_Hero.objects.all()
     })
 
 def services(request):

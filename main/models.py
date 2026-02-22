@@ -22,6 +22,15 @@ class Hero_Section(models.Model):
         return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
 
 
+class About_Us_Hero(models.Model):
+    about_hero_text_title = models.CharField(max_length=60)
+    about_hero_text_body = models.TextField(max_length=300)
+    about_hero_image = models.ImageField(upload_to=image_upload_path)
+
+    def __str__(self):
+        return f"{self.about_hero_text_title} - {self.about_hero_text_body[:50]} ..."
+
+
 class Service(models.Model):
     service_title = models.CharField(max_length=60)
     service_description = models.TextField(max_length=4000)

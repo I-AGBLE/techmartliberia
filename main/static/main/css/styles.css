@@ -192,7 +192,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 }
 
 .hero_section::after {
@@ -719,7 +719,7 @@ form textarea {
 
 .why_us_texts {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .why_us {
@@ -741,6 +741,11 @@ form textarea {
   transition: var(--transition);
   object-fit: cover;
 
+}
+
+.why_us_text {
+  display: grid;
+  gap: 0.5rem;
 }
 
 

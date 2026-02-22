@@ -4,6 +4,29 @@
 
 {% block content %}
 
+{% if about_hero %}
+<div class="hero_section" style="background: url('{{ about_hero.0.about_hero_image.url }}') center center/cover no-repeat;">
+    {% for about in about_hero %}
+    <div class="hero_text">
+        <div class="hero_text_title">
+            <h1>
+                <span>TechMart Liberia: </span> {{ about.about_hero_text_title|title }}
+            </h1>
+        </div>
+        <div class="hero_text_body">
+            <p>
+                {{ about.about_hero_text_body|truncatechars:500 }}
+            </p>
+        </div>
+        <div class="hero_link">
+            <a href="{% url 'main:contact' %}">Contact Us Now!</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
 <div class="why_us_section">
     <div class="why_us_images">
         <div class="why_us_images_top">
@@ -21,30 +44,84 @@
         <div class="why_us_title">
             <h2>Why <span> Choose Us?</span></h2>
         </div>
+
+        {% for why in why_us %}
         <div class="why_us">
             <div class="why_us_icon">
-                <img src="{% static 'main/images/default_service_icon.png' %}" alt="Why Us Icon 1">
+                <img src="{{ why.why_us_icon.url }}" alt="{{ why.why_us_title }} Icon">
             </div>
 
             <div class="why_us_text">
                 <div class="why_us_title">
-                    <h3>Proven Expertise</h3>
+                    <h3>{{ why.why_us_title }}</h3>
                 </div>
                 <div class="why_us_desc">
                     <p>
-                        Our team brings deep technical knowledge and real-world experience across multiple industries.
-                        We design and deliver robust, scalable solutions that solve complex challenges and position your
-                        business for long-term success.
+                        {{ why.why_us_desc }}
                     </p>
                 </div>
             </div>
         </div>
 
+        {% endfor %}
+
+
+        {% if why_us|length == 0 %}
+        <div class="empty_notification">
+            <center>
+                <p>No why us items available.</p>
+            </center>
+        </div>
+        {% endif %}
         <div class="hero_link">
             <a href="{% url 'main:services' %}">Explore Our Services</a>
         </div>
     </div>
 
+</div>
+
+
+
+    <div class="team">
+
+        <div class="team_title">
+            <h2>Meet <span>Our Team</span></h2>
+        </div>
+
+        <div class="container team_container">
+            {% for member in team_members %}
+            <article class="team_member">
+                <div class="team_member-image">
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture">
+                </div>
+
+                <div class="team_member-info">
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.position }}</p>
+                </div>
+
+                <div class="team_member-socials">
+                    <a href="{{ member.instagram_url }}" target="_blank">
+                        <i class="fa-brands fa-square-instagram"></i>
+                    </a>
+                    <a href="{{ member.twitter_url }}" target="_blank">
+                        <i class="fa-brands fa-square-twitter"></i>
+                    </a>
+                    <a href="{{ member.linkedin_url }}" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% if team_members|length == 0 %}
+        <div class="empty_notification">
+            <center>
+                <p>No team members available.</p>
+            </center>
+        </div>
+        {% endif %}
+    </div>
 
 
     {% endblock %}

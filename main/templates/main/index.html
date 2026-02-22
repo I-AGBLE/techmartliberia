@@ -10,7 +10,7 @@
     <div class="hero_text">
         <div class="hero_text_title">
             <h1>
-               <span>TechMart Liberia: </span> {{ hero.hero_text_title|title }}
+                <span>TechMart Liberia: </span> {{ hero.hero_text_title|title }}
             </h1>
         </div>
         <div class="hero_text_body">
@@ -65,9 +65,9 @@
         {% endfor %}
     </div>
 
-            <div class="hero_link">
-            <a href="{% url 'main:services' %}">Find More Services</a>
-        </div>
+    <div class="hero_link">
+        <a href="{% url 'main:services' %}">Find More Services</a>
+    </div>
     {% if services|length == 0 %}
     <div class="empty_notification">
         <center>
@@ -80,9 +80,9 @@
 
 <div class="team">
 
-        <div class="team_title">
-            <h2>Meet <span>Our Team</span></h2>
-        </div>
+    <div class="team_title">
+        <h2>Meet <span>Our Team</span></h2>
+    </div>
 
     <div class="container team_container">
         {% for member in team_members %}
