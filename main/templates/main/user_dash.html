@@ -14,6 +14,9 @@
         </p>
     </div>
 
+
+
+
     {% for hero in hero_section %}
     <div class="admin_hero_section">
         <div class="admin_hero_section_image">
@@ -27,7 +30,7 @@
         </div>
 
         <div class="dashboard_links">
-            <a href="">Edit Hero Section</a>
+            <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
         </div>
     </div>
     {% endfor %}
@@ -35,9 +38,15 @@
 
 
 
+
+
+
     <div class="admin_services">
         <div class="admin_services_title">
             <h2>Manage Your <span> Services</span></h2>
+            <div class="add_service">
+                <a href="" class="add"><i class="fa-solid fa-plus"></i></a>
+            </div>
         </div>
 
         <div class="admin_services_list">
@@ -51,14 +60,18 @@
                     <p>{{ service.service_description|truncatewords:15 }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="">Edit Service</a>
-                    <a href="">Add Service</a>
-                    <a href="">Delete Service</a>
+                    <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+
+
+
+
+
 
 
 
@@ -77,7 +90,7 @@
                 <p>{{ about.about_hero_text_body|truncatewords:15 }}</p>
             </div>
             <div class="dashboard_links">
-                <a href="">Edit About Us Hero Section</a>
+                <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
             </div>
         </div>
         {% endfor %}
@@ -85,14 +98,24 @@
 
 
 
+
+
+
+
+
+
+
     <div class="admin_team_members">
         <div class="admin_team_members_title">
             <h2>Manage Your <span> Team Members</span></h2>
+            <div class="add_team_member">
+                <a href="" class="add"><i class="fa-solid fa-plus"></i></a>
+            </div>
         </div>
 
         <div class="admin_team_members_container">
 
-        {% for member in team_members %}
+            {% for member in team_members %}
             <div class="admin_team_member_item">
                 <div class="admin_team_member_image">
                     <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture">
@@ -102,19 +125,23 @@
                     <p>{{ member.role }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="">Edit Team Member</a>
-                    <a href="">Add Team Member</a>
-                    <a href="">Delete Team Member</a>
+                    <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 
 
 
 
-    
+
+
+
+
+
+
     <div class="admin_why_us">
         <div class="admin_why_us_title">
             <h2>Manage Your <span> Why Choose Us Section</span></h2>
@@ -122,19 +149,19 @@
 
 
         <div class="admin_why_us_container">
-     {% for why in why_us %}
-        <div class="admin_why_us_item">
-            <div class="admin_why_us_info">
-                <h3>{{ why.why_us_title }}</h3>
-                <p>{{ why.why_us_desc|truncatewords:15 }}</p>
+            {% for why in why_us %}
+            <div class="admin_why_us_item">
+                <div class="admin_why_us_info">
+                    <h3>{{ why.why_us_title }}</h3>
+                    <p>{{ why.why_us_desc|truncatewords:15 }}</p>
+                </div>
+                <div class="dashboard_links">
+                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href=""><i class="fa-solid fa-plus"></i></a>
+                    <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                </div>
             </div>
-            <div class="dashboard_links">
-                <a href="">Edit</a>
-                <a href="">Add</a>
-                <a href="">Delete</a>
-            </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 </div>

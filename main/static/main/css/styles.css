@@ -793,7 +793,6 @@ form textarea {
 }
 
 .admin_hero_section:hover {
-  box-shadow: var(--box_shadow);
   border: 1px solid var(--text_color_variant);
 }
 
@@ -816,9 +815,40 @@ form textarea {
 }
 
 .dashboard_links {
-  display: grid;
-  gap: .5rem;
+  display: flex;
+  gap: 2rem;
 }
+
+.edit i {
+  color: var(--color_gold);
+}
+
+.edit i:hover {
+  color: var(--text_color);
+}
+
+.add i {
+  color: var(--deep_bg);
+  background-color: var(--color_gold);
+  padding: .2rem;
+  font-size: 1.1rem;
+  border-radius: var(--border_radius);
+}
+
+.add i:hover {
+  background-color: var(--text_color);
+  color: var(--deep_bg);
+  box-shadow: var(--box_shadow);
+}
+
+.delete i {
+  color: var(--color_danger);
+}
+
+.delete i:hover {
+  color: var(--color_gold);
+}
+
 
 .dashboard_links a:hover {
   color: var(--color_gold);
@@ -830,6 +860,11 @@ form textarea {
   background-color: var(--nav_bg);
   padding: 1rem 1rem;
   border-radius: var(--border_radius);
+}
+
+.admin_services_title, .admin_team_members_title {
+  display: flex;
+  justify-content: space-between;
 }
 
 .admin_services_list {
