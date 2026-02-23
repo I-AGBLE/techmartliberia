@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="form_field">
+<h2>Edit Hero Section</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    <input type="text" name="hero_text_title" id="hero_text_title" value="{{ hero.hero_text_title }}"
+        placeholder="Enter Hero Title" required>
+
+    <textarea name="hero_text_body" id="hero_text_body"
+        placeholder="Enter Hero Text">{{ hero.hero_text_body }}</textarea>
+
+    <input type="file" name="hero_image" id="hero_image">
+    {% if hero.hero_image %}
+    <img src="{{ hero.hero_image.url }}" alt="{{ hero.hero_text_title }}" width=200 height=200 />
+    {% endif %}
+
+    <input type="submit" class="submit" value="Update Hero Section">
+</form>
+</div>
+
+{% endblock %}

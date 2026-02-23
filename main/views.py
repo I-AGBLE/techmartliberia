@@ -18,9 +18,8 @@ def index(request):
         'team_members': Team_Member.objects.all(),
         'services': Service.objects.all(),
     })
-
-
-
+    
+ 
 
 # -------------------------------  Contact Page View ---------------------------------- #
 def contact(request):
@@ -121,4 +120,59 @@ def user_dash(request):
         'why_us': why_us.objects.all(),
     })
 
+
+
+
+
+   
+# -------------------------------  Edit Hero Section ---------------------------------- #
+@login_required
+def edit_hero(request, hero_id):
+    import os
+    from django.conf import settings
+    hero = Hero_Section.objects.get(pk=hero_id)
+    if request.method == 'POST':
+        hero.hero_text_title = request.POST.get('hero_text_title')
+        hero.hero_text_body = request.POST.get('hero_text_body')
+        if 'hero_image' in request.FILES:
+            # Delete old image file if it exists
+            if hero.hero_image and hasattr(hero.hero_image, 'path'):
+                old_image_path = hero.hero_image.path
+                if os.path.isfile(old_image_path):
+                    try:
+                        os.remove(old_image_path)
+                    except Exception:
+                        pass
+            hero.hero_image = request.FILES['hero_image']
+        hero.save()
+        return redirect('main:index')
+    return render(request, 'main/edit_hero.html', {'hero': hero})
+
+
+
+
+# -------------------------------  Edit Service Section ---------------------------------- #
+@login_required
+def edit_service(request, service_id):
+    import os
+    from django.conf import settings
+    service = Service.objects.get(pk=service_id)
+    if request.method == 'POST':
+        service.service_title = request.POST.get('service_title')
+        service.service_description = request.POST.get('service_description')
+        if 'service_image' in request.FILES:
+            # Delete old image file if it exists
+            if service.service_image and hasattr(service.service_image, 'path'):
+                old_image_path = service.service_image.path
+                if os.path.isfile(old_image_path):
+                    try:
+                        os.remove(old_image_path)
+                    except Exception:
+                        pass
+            service.service_image = request.FILES['service_image']
+        if 'service_icon' in request.FILES:
+            service.service_icon = request.FILES['service_icon']
+        service.save()
+        return redirect('main:services')
+    return render(request, 'main/edit_service.html', {'service': service})
 
