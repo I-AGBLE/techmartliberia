@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form_field">
+    <h2>Add New Why Us Section</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="why_us_title" id="why_us_title" placeholder="Enter Why Us Title" required>
+
+        <textarea name="why_us_desc" id="why_us_desc" placeholder="Enter Why Us Description" required></textarea>
+
+        <input type="file" name="why_us_icon" id="why_us_icon">
+
+        <input type="submit" class="submit" value="Add">
+    </form>
+</div>
+{% endblock %}

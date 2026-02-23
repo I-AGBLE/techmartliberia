@@ -293,3 +293,15 @@ def add_new_team_member(request):
     return render(request, 'main/add_new_team_member.html')
 
 
+def add_new_why_us(request):
+    if request.method == 'POST':
+        why_us_title = request.POST.get('why_us_title')
+        why_us_desc = request.POST.get('why_us_desc')
+        why_us_icon = request.FILES.get('why_us_icon')
+        new_why = why_us.objects.create(
+            why_us_title=why_us_title,
+            why_us_desc=why_us_desc,
+            why_us_icon=why_us_icon
+        )
+        return redirect('main:user_dash')
+    return render(request, 'main/add_new_why_us.html')

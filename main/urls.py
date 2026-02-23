@@ -17,4 +17,5 @@ urlpatterns = [
     path('edit_admin_why_us/<int:why_us_id>/', views.edit_admin_why_us, name='edit_admin_why_us'),
     path('add_new_service/', views.add_new_service, name='add_new_service'),
     path('add_new_team_member/', views.add_new_team_member, name='add_new_team_member'),
+    path('add_new_why_us/', views.add_new_why_us, name='add_new_why_us'),
 ]
