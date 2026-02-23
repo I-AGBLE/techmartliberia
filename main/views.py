@@ -203,7 +203,7 @@ def edit_about_us_hero(request, about_hero_id):
 
 
 
-
+# -------------------------------  Edit Admin Team Member Section ---------------------------------- #
 def edit_admin_team_member(request, member_id):
     import os
     from django.conf import settings
@@ -228,3 +228,26 @@ def edit_admin_team_member(request, member_id):
         return redirect('main:user_dash')
     return render(request, 'main/edit_admin_team_member.html', {'member': member})
 
+
+
+@login_required
+def edit_admin_why_us(request, why_us_id):
+    import os
+    from django.conf import settings
+    why = why_us.objects.get(pk=why_us_id)
+    if request.method == 'POST':
+        why.why_us_title = request.POST.get('why_us_title')
+        why.why_us_desc = request.POST.get('why_us_desc')
+        if 'why_us_icon' in request.FILES:
+            # Delete old image file if it exists
+            if why.why_us_icon and hasattr(why.why_us_icon, 'path'):
+                old_image_path = why.why_us_icon.path
+                if os.path.isfile(old_image_path):
+                    try:
+                        os.remove(old_image_path)
+                    except Exception:
+                        pass
+            why.why_us_icon = request.FILES['why_us_icon']
+        why.save()
+        return redirect('main:user_dash')
+    return render(request, 'main/edit_admin_why_us.html', {'why': why})

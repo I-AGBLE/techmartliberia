@@ -161,7 +161,7 @@
                     <p>{{ why.why_us_desc|truncatewords:15 }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{% url 'main:edit_admin_why_us' why.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>

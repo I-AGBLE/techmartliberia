@@ -1,0 +1,27 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %} 
+<div class="form_field">
+<h2>Edit Why Us Section</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <input type="text" name="why_us_title" id="why_us_title" value="{{ why.why_us_title }}"
+        placeholder="Enter Why Us Title" required>
+
+    <input type="file" name="why_us_icon" id="why_us_icon">
+    {% if why.why_us_icon %}
+        <div class="image_preview">
+            <img src="{{ why.why_us_icon.url }}" alt="Current Icon Preview" width=200 height=200 />
+        </div>
+    {% endif %}
+
+
+    <textarea name="why_us_desc" id="why_us_desc"
+        placeholder="Enter Why Us Description">{{ why.why_us_desc }}</textarea>
+
+    <input type="submit" class="submit" value="Update">
+</div>
+
+{% endblock %}
