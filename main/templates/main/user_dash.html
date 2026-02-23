@@ -145,6 +145,9 @@
     <div class="admin_why_us">
         <div class="admin_why_us_title">
             <h2>Manage Your <span> Why Choose Us Section</span></h2>
+            <div class="add_why_us">
+                <a href="" class="add"><i class="fa-solid fa-plus"></i></a>
+            </div>
         </div>
 
 
@@ -156,9 +159,8 @@
                     <p>{{ why.why_us_desc|truncatewords:15 }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href=""><i class="fa-solid fa-plus"></i></a>
-                    <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}

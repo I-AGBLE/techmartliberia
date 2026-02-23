@@ -862,7 +862,7 @@ form textarea {
   border-radius: var(--border_radius);
 }
 
-.admin_services_title, .admin_team_members_title {
+.admin_services_title, .admin_team_members_title, .admin_why_us_title {
   display: flex;
   justify-content: space-between;
 }
