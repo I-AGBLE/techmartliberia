@@ -251,3 +251,24 @@ def edit_admin_why_us(request, why_us_id):
         why.save()
         return redirect('main:user_dash')
     return render(request, 'main/edit_admin_why_us.html', {'why': why})
+
+
+def add_new_service(request):
+    if request.method == 'POST':
+        service_title = request.POST.get('service_title')
+        service_description = request.POST.get('service_description')
+        service_image = request.FILES.get('service_image')
+        service_icon = request.FILES.get('service_icon')
+        new_service = Service.objects.create(
+            service_title=service_title,
+            service_description=service_description,
+            service_image=service_image,
+            service_icon=service_icon
+        )
+        return redirect('main:service_page', service_id=new_service.id)
+    return render(request, 'main/add_new_service.html')
+
+
+
+
+

@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form_field">
+    <h2>Add New Service</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="service_title" id="service_title" placeholder="Enter Service Title" required>
+
+        <textarea name="service_description" id="service_description" placeholder="Enter Service Description"></textarea>
+
+        <input type="file" name="service_image" id="service_image">
+
+        <input type="file" name="service_icon" id="service_icon">
+
+        <input type="submit" class="submit" value="Add Service">
+</div>
+
+{% endblock %}

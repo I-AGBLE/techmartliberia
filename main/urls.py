@@ -15,4 +15,5 @@ urlpatterns = [
     path('edit_about_us_hero/<int:about_hero_id>/', views.edit_about_us_hero, name='edit_about_us_hero'),
     path('edit_admin_team_member/<int:member_id>/', views.edit_admin_team_member, name='edit_admin_team_member'),
     path('edit_admin_why_us/<int:why_us_id>/', views.edit_admin_why_us, name='edit_admin_why_us'),
+    path('add_new_service/', views.add_new_service, name='add_new_service'),
 ]
