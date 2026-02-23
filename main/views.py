@@ -176,3 +176,27 @@ def edit_service(request, service_id):
         return redirect('main:service_page', service_id=service.id)
     return render(request, 'main/edit_service.html', {'service': service})
 
+
+
+# -------------------------------  Edit About Us Hero Section ---------------------------------- #
+@login_required
+def edit_about_us_hero(request, about_hero_id):
+    import os
+    from django.conf import settings
+    about_hero = About_Us_Hero.objects.get(pk=about_hero_id)
+    if request.method == 'POST':
+        about_hero.about_hero_text_title = request.POST.get('about_hero_text_title')
+        about_hero.about_hero_text_body = request.POST.get('about_hero_text_body')
+        if 'about_hero_image' in request.FILES:
+            # Delete old image file if it exists
+            if about_hero.about_hero_image and hasattr(about_hero.about_hero_image, 'path'):
+                old_image_path = about_hero.about_hero_image.path
+                if os.path.isfile(old_image_path):
+                    try:
+                        os.remove(old_image_path)
+                    except Exception:
+                        pass
+            about_hero.about_hero_image = request.FILES['about_hero_image']
+        about_hero.save()
+        return redirect('main:about')
+    return render(request, 'main/edit_about_us_hero.html', {'about_hero': about_hero})

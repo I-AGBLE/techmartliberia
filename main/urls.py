@@ -12,4 +12,5 @@ urlpatterns = [
     path('user_dash/', views.user_dash, name='user_dash'),
     path('edit_hero/<int:hero_id>/', views.edit_hero, name='edit_hero'),
     path('edit_service/<int:service_id>/', views.edit_service, name='edit_service'),
+    path('edit_about_us_hero/<int:about_hero_id>/', views.edit_about_us_hero, name='edit_about_us_hero'),
 ]

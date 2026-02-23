@@ -92,7 +92,7 @@
                 <p>{{ about.about_hero_text_body|truncatewords:15 }}</p>
             </div>
             <div class="dashboard_links">
-                <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{% url 'main:edit_about_us_hero' about.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
             </div>
         </div>
         {% endfor %}
