@@ -62,7 +62,7 @@
                     <p>{{ service.service_description|truncatewords:15 }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{% url 'main:edit_service' service.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
