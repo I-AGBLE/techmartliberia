@@ -200,3 +200,31 @@ def edit_about_us_hero(request, about_hero_id):
         about_hero.save()
         return redirect('main:about')
     return render(request, 'main/edit_about_us_hero.html', {'about_hero': about_hero})
+
+
+
+
+def edit_admin_team_member(request, member_id):
+    import os
+    from django.conf import settings
+    member = Team_Member.objects.get(pk=member_id)
+    if request.method == 'POST':
+        member.name = request.POST.get('name')
+        member.position = request.POST.get('position')
+        if 'image' in request.FILES:
+            # Delete old image file if it exists
+            if member.image and hasattr(member.image, 'path'):
+                old_image_path = member.image.path
+                if os.path.isfile(old_image_path):
+                    try:
+                        os.remove(old_image_path)
+                    except Exception:
+                        pass
+            member.image = request.FILES['image']
+        member.instagram_url = request.POST.get('instagram_url')
+        member.twitter_url = request.POST.get('twitter_url')
+        member.linkedin_url = request.POST.get('linkedin_url')
+        member.save()
+        return redirect('main:user_dash')
+    return render(request, 'main/edit_admin_team_member.html', {'member': member})
+

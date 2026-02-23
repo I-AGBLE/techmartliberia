@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form_field">
+    <h2>Edit Team Member Details</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" id="name" value="{{ member.name }}" placeholder="Enter Team Member Name" required>
+        <input type="text" name="position" id="position" value="{{ member.position }}" placeholder="Enter Team Member Position" required>
+        <input type="file" name="image" id="image">
+        {% if member.image %}   
+        <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture" width=200 height=200 />
+        {% endif %}
+        <input type="text" name="instagram_url" id="instagram_url" value="{{ member.instagram_url }}" placeholder="Enter Instagram URL">
+        <input type="text" name="linkedin_url" id="linkedin_url" value="{{ member.linkedin_url }}" placeholder="Enter LinkedIn URL">
+        <input type="text" name="twitter_url" id="twitter_url" value="{{ member.twitter_url }}" placeholder="Enter Twitter URL">
+
+        <input type="submit" class="submit" value="Update Team Member Details">
+    </form>
+
+</div>
+
+{% endblock %}
