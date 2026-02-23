@@ -173,6 +173,6 @@ def edit_service(request, service_id):
         if 'service_icon' in request.FILES:
             service.service_icon = request.FILES['service_icon']
         service.save()
-        return redirect('main:services')
+        return redirect('main:service_page', service_id=service.id)
     return render(request, 'main/edit_service.html', {'service': service})
 
