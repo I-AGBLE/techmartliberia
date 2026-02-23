@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form_field">
+    <h2>Add New Team Member</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" name="name" id="name" placeholder="Enter Member Name" required>
+
+        <input type="text" name="position" id="position" placeholder="Enter Position" required>
+
+        <input type="file" name="image" id="image">
+
+        <input type="url" name="instagram_url" id="instagram_url" placeholder="Instagram URL">
+
+        <input type="url" name="twitter_url" id="twitter_url" placeholder="Twitter URL">
+
+        <input type="url" name="linkedin_url" id="linkedin_url" placeholder="LinkedIn URL">
+
+        <input type="submit" class="submit" value="Add Team Member">
+    </form>
+</div>
+{% endblock %}

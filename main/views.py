@@ -253,6 +253,8 @@ def edit_admin_why_us(request, why_us_id):
     return render(request, 'main/edit_admin_why_us.html', {'why': why})
 
 
+
+@login_required
 def add_new_service(request):
     if request.method == 'POST':
         service_title = request.POST.get('service_title')
@@ -270,5 +272,24 @@ def add_new_service(request):
 
 
 
+
+def add_new_team_member(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        position = request.POST.get('position')
+        image = request.FILES.get('image')
+        instagram_url = request.POST.get('instagram_url')
+        twitter_url = request.POST.get('twitter_url')
+        linkedin_url = request.POST.get('linkedin_url')
+        new_member = Team_Member.objects.create(
+            name=name,
+            position=position,
+            image=image,
+            instagram_url=instagram_url,
+            twitter_url=twitter_url,
+            linkedin_url=linkedin_url
+        )
+        return redirect('main:user_dash')
+    return render(request, 'main/add_new_team_member.html')
 
 
