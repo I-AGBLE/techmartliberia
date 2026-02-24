@@ -4,6 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 
+import os
+from django.conf import settings
+
+
 
 from main.models import About_Us_Hero, Hero_Section, Service, Team_Member, why_us
 
@@ -124,12 +128,10 @@ def user_dash(request):
 
 
 
-   
+
 # -------------------------------  Edit Hero Section ---------------------------------- #
 @login_required
 def edit_hero(request, hero_id):
-    import os
-    from django.conf import settings
     hero = Hero_Section.objects.get(pk=hero_id)
     if request.method == 'POST':
         hero.hero_text_title = request.POST.get('hero_text_title')
@@ -154,8 +156,6 @@ def edit_hero(request, hero_id):
 # -------------------------------  Edit Service Section ---------------------------------- #
 @login_required
 def edit_service(request, service_id):
-    import os
-    from django.conf import settings
     service = Service.objects.get(pk=service_id)
     if request.method == 'POST':
         service.service_title = request.POST.get('service_title')
@@ -181,8 +181,6 @@ def edit_service(request, service_id):
 # -------------------------------  Edit About Us Hero Section ---------------------------------- #
 @login_required
 def edit_about_us_hero(request, about_hero_id):
-    import os
-    from django.conf import settings
     about_hero = About_Us_Hero.objects.get(pk=about_hero_id)
     if request.method == 'POST':
         about_hero.about_hero_text_title = request.POST.get('about_hero_text_title')
@@ -205,8 +203,6 @@ def edit_about_us_hero(request, about_hero_id):
 
 # -------------------------------  Edit Admin Team Member Section ---------------------------------- #
 def edit_admin_team_member(request, member_id):
-    import os
-    from django.conf import settings
     member = Team_Member.objects.get(pk=member_id)
     if request.method == 'POST':
         member.name = request.POST.get('name')
@@ -232,8 +228,6 @@ def edit_admin_team_member(request, member_id):
 
 @login_required
 def edit_admin_why_us(request, why_us_id):
-    import os
-    from django.conf import settings
     why = why_us.objects.get(pk=why_us_id)
     if request.method == 'POST':
         why.why_us_title = request.POST.get('why_us_title')
@@ -272,7 +266,7 @@ def add_new_service(request):
 
 
 
-
+@login_required
 def add_new_team_member(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -293,6 +287,8 @@ def add_new_team_member(request):
     return render(request, 'main/add_new_team_member.html')
 
 
+
+@login_required
 def add_new_why_us(request):
     if request.method == 'POST':
         why_us_title = request.POST.get('why_us_title')
@@ -305,3 +301,11 @@ def add_new_why_us(request):
         )
         return redirect('main:user_dash')
     return render(request, 'main/add_new_why_us.html')
+
+
+
+@login_required
+def delete_service(request, service_id):
+    service = Service.objects.get(pk=service_id)
+    service.delete()
+    return redirect('main:user_dash')

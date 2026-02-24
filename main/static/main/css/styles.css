@@ -105,8 +105,14 @@ nav:hover {
 
 .nav_logo {
   width: 3.5rem;
-  height: 2.5rem;
+  height: 3.5rem;
   overflow: hidden;
+}
+
+.nav_logo:hover  {
+  filter: brightness(0) invert(1);
+  transition: var(--transition);
+  transform: scale(.9);
 }
 
 .nav_logo img {
