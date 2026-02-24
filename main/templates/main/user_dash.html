@@ -128,7 +128,7 @@
                 </div>
                 <div class="dashboard_links">
                     <a href="{% url 'main:edit_admin_team_member' member.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="{% url 'main:delete_team_member' member.id %}" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}
@@ -162,7 +162,7 @@
                 </div>
                 <div class="dashboard_links">
                     <a href="{% url 'main:edit_admin_why_us' why.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="{% url 'main:delete_why_us' why.id %}" class="delete"><i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}

@@ -324,3 +324,32 @@ def delete_service(request, service_id):
                 pass
     service.delete()
     return redirect('main:user_dash')
+
+
+
+@login_required
+def delete_team_member(request, member_id):
+    member = Team_Member.objects.get(pk=member_id)
+    if member.image and hasattr(member.image, 'path'):
+        image_path = member.image.path
+        if os.path.isfile(image_path):
+            try:
+                os.remove(image_path)
+            except Exception:
+                pass
+    member.delete()
+    return redirect('main:user_dash')
+
+
+
+def delete_why_us(request, why_us_id):
+    why = why_us.objects.get(pk=why_us_id)
+    if why.why_us_icon and hasattr(why.why_us_icon, 'path'):
+        icon_path = why.why_us_icon.path
+        if os.path.isfile(icon_path):
+            try:
+                os.remove(icon_path)
+            except Exception:
+                pass
+    why.delete()
+    return redirect('main:user_dash')
