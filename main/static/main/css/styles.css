@@ -93,6 +93,7 @@ nav {
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
+  overflow: hidden;
 }
 
 span {
@@ -126,9 +127,9 @@ nav:hover {
 }
 
 .active {
-  background-color: var(--color_gold);
-  padding: 0.5rem 0.1rem;
-  border-radius: var(--border_radius);
+background-color: var(--deep_bg);
+padding: .2rem .6rem;
+border-radius: var(--border_radius);
 }
 
 .menu_items ul li a {
@@ -795,23 +796,6 @@ form textarea {
   gap: 1rem;
 }
 
-.dashboard_title a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: var(--color_danger);
-  color: var(--text_color);
-  border-radius: var(--border_radius);
-  font-weight: 900;
-  transition: var(--transition);
-  width: 5rem;
-}
-
-.dashboard_title a:hover {
-  background-color: var(--text_color);
-  color: var(--default_bg);
-  border-radius: var(--border_radius);
-}
-
 .admin_hero_section {
   display: grid;
   gap: 1rem;
@@ -1048,11 +1032,31 @@ border-radius: var(--border_radius);
   gap: 1rem;
 }
 
+#dashboard {
+  background-color: var(--color_gold);
+  color: var(--default_bg);
+  font-weight: 900;
+  padding: .3rem .5rem;
+  border-radius: var(--border_radius);
+}
 
+#dashboard:hover {
+  background-color: var(--text_color);
+  color: var(--default_bg);
+}
 
+#logout {
+  background-color: var(--color_danger);
+  color: var(--text_color);
+  font-weight: 900;
+  padding: .3rem .5rem;
+  border-radius: var(--border_radius);
+}
 
-
-
+#logout:hover {
+  background-color: var(--text_color);
+  color: var(--default_bg);
+}
 
 #hero_text_body, #service_description, #about_hero_text_body, #why_us_desc{
   width: 100%;
