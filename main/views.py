@@ -304,8 +304,23 @@ def add_new_why_us(request):
 
 
 
+
 @login_required
 def delete_service(request, service_id):
     service = Service.objects.get(pk=service_id)
+    if service.service_image and hasattr(service.service_image, 'path'):
+        image_path = service.service_image.path
+        if os.path.isfile(image_path):
+            try:
+                os.remove(image_path)
+            except Exception:
+                pass
+    if service.service_icon and hasattr(service.service_icon, 'path'):
+        icon_path = service.service_icon.path
+        if os.path.isfile(icon_path):
+            try:
+                os.remove(icon_path)
+            except Exception:
+                pass
     service.delete()
     return redirect('main:user_dash')

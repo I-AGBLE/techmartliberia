@@ -18,4 +18,5 @@ urlpatterns = [
     path('add_new_service/', views.add_new_service, name='add_new_service'),
     path('add_new_team_member/', views.add_new_team_member, name='add_new_team_member'),
     path('add_new_why_us/', views.add_new_why_us, name='add_new_why_us'),
+    path('delete_service/<int:service_id>/', views.delete_service, name='delete_service'),
 ]
