@@ -341,7 +341,7 @@ def delete_team_member(request, member_id):
     return redirect('main:user_dash')
 
 
-
+@login_required
 def delete_why_us(request, why_us_id):
     why = why_us.objects.get(pk=why_us_id)
     if why.why_us_icon and hasattr(why.why_us_icon, 'path'):
@@ -353,3 +353,11 @@ def delete_why_us(request, why_us_id):
                 pass
     why.delete()
     return redirect('main:user_dash')
+
+
+
+
+def logout(request):
+    from django.contrib.auth import logout
+    logout(request)
+    return redirect('main:index')
