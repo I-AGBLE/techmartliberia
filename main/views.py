@@ -188,6 +188,9 @@ def edit_about_us_hero(request, about_hero_id):
     if request.method == 'POST':
         about_hero.about_hero_text_title = request.POST.get('about_hero_text_title')
         about_hero.about_hero_text_body = request.POST.get('about_hero_text_body')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout')
         if 'about_hero_image' in request.FILES:
             # Delete old image file if it exists
             if about_hero.about_hero_image and hasattr(about_hero.about_hero_image, 'path'):

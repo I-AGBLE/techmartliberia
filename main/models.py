@@ -33,7 +33,8 @@ class About_Us_Hero(models.Model):
     about_hero_text_title = models.CharField(max_length=60)
     about_hero_text_body = models.TextField(max_length=300)
     about_hero_image = models.ImageField(upload_to=image_upload_path)
-
+    madatory_field = models.CharField(max_length=20)
+    
     def __str__(self):
         return f"{self.about_hero_text_title} - {self.about_hero_text_body[:50]} ..."
 
