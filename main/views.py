@@ -287,6 +287,9 @@ def add_new_team_member(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         position = request.POST.get('position')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout') 
         image = request.FILES.get('image')
         instagram_url = request.POST.get('instagram_url')
         twitter_url = request.POST.get('twitter_url')
@@ -297,7 +300,8 @@ def add_new_team_member(request):
             image=image,
             instagram_url=instagram_url,
             twitter_url=twitter_url,
-            linkedin_url=linkedin_url
+            linkedin_url=linkedin_url,
+            mandatory_field=madatory_field
         )
         return redirect('main:user_dash')
     return render(request, 'main/add_new_team_member.html')
