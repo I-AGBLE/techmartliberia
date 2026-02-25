@@ -15,15 +15,13 @@ from main.models import About_Us_Hero, Hero_Section, Service, Team_Member, why_u
 
 
 
-# -------------------------------  Index Page View ---------------------------------- #
+# -------------------------------  Home Page Secion View ---------------------------------- #
 def index(request):
     return render(request, 'main/index.html', {
         'hero_section': Hero_Section.objects.all(),
         'team_members': Team_Member.objects.all(),
         'services': Service.objects.all(),
     })
-    
- 
 
 # -------------------------------  Contact Page View ---------------------------------- #
 def contact(request):
@@ -136,6 +134,9 @@ def edit_hero(request, hero_id):
     if request.method == 'POST':
         hero.hero_text_title = request.POST.get('hero_text_title')
         hero.hero_text_body = request.POST.get('hero_text_body')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout')
         if 'hero_image' in request.FILES:
             # Delete old image file if it exists
             if hero.hero_image and hasattr(hero.hero_image, 'path'):
@@ -149,7 +150,6 @@ def edit_hero(request, hero_id):
         hero.save()
         return redirect('main:index')
     return render(request, 'main/edit_hero.html', {'hero': hero})
-
 
 
 
