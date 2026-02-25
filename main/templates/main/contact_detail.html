@@ -1,0 +1,12 @@
+{% extends 'main/layout.html' %}
+
+{% block content %} 
+<div class="service_page">
+    <div class="contact_detail_info">
+        <h4> {{ contact.name }}</h4>
+        <h4>{{ contact.tel }}</h4>
+        <h4> {{ contact.email }}</h4>
+        <p> {{ contact.message }}</p>
+    </div>
+</div>
+{% endblock %}

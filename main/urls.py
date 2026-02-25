@@ -23,4 +23,6 @@ urlpatterns = [
     path('delete_why_us/<int:why_us_id>/', views.delete_why_us, name='delete_why_us'),
     path('logout/', views.logout, name='logout'),
     path('contact_us/', views.contact_us, name='contact_us'),
+    path('client_contact/', views.client_contact, name='client_contact'),
+    path('contact_detail/<int:contact_id>/', views.contact_detail, name='contact_detail'),  
 ]

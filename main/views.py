@@ -53,6 +53,7 @@ def services(request):
         'services': Service.objects.all()
     })
     
+    
 def service_page(request, service_id):
     service = Service.objects.get(pk=service_id)
     return render(request, 'main/service_page.html', {
@@ -408,3 +409,17 @@ def contact_us(request):
             mandatory_field=mandatory_field
         )
     return render(request, 'main/contact.html')
+
+
+@login_required
+def client_contact(request):
+    return render(request, 'main/client_contact.html', {
+        'client_contact': Contact_Us.objects.all().order_by('-id')
+    })
+    
+@login_required
+def contact_detail(request, contact_id):
+    contact = Contact_Us.objects.get(pk=contact_id)
+    return render(request, 'main/contact_detail.html', {
+        'contact': contact
+    })

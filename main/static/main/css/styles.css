@@ -1080,6 +1080,69 @@ border-radius: var(--border_radius);
   font-size: 1.5rem;
 }
 
+
+/* --------------------------------- Table Styles ----------------------------------------------- */
+#form_field_for_table {
+  height: 35rem;
+  overflow-y: scroll;
+}
+
+table {
+  font-size: .8rem;
+}
+
+th {
+  text-align: left;
+  padding: .6rem;
+  background-color: var(--default_bg);
+}
+
+td {
+  border-bottom: 0.1px solid rgb(71, 71, 71);
+  padding: .5rem;
+}
+
+td a i:hover {
+  color: var(--color_gold);
+}
+
+
+
+tr:nth-child(even) {
+  background-color: var(--nav);
+}
+
+tbody tr:hover {
+  background-color: var(--nav_bg);
+  transform: scale(1.1);
+  transform: translateX(-5px);
+  transition: var(--transition);
+}
+
+.contact_detail_info {
+  display: grid;
+  gap: .2rem;
+}
+
+.contact_detail_info p {
+  margin-top: 1rem;
+}
+
+
+#client_btn {
+  background-color: var(--color_gold);
+  padding: .5rem;
+  color: var(--deep_bg);
+  width: 7.5rem;
+  border-radius: var(--border_radius);
+  font-weight: 900;
+  transition: var(--transition);
+}
+
+#client_btn:hover {
+  background-color: var(--text_color);
+}
+
 /* --------------------------------- Footer Page Styles ----------------------------------------------- */
 footer {
   background-color: var(--nav_bg);
