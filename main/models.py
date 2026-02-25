@@ -45,7 +45,8 @@ class Service(models.Model):
     service_description = models.TextField(max_length=4000)
     service_image = models.ImageField(upload_to=image_upload_path, null=True, blank=True)
     service_icon = models.ImageField(upload_to=image_upload_path, null=True, blank=True)
-
+    mandatory_field = models.CharField(max_length=20)
+    
     def __str__(self):
         return f"{self.service_title} - {self.service_description[:50]} ..."
 

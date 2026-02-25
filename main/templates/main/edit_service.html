@@ -1,24 +1,32 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block content %} 
+{% block content %}
 <div class="form_field">
-<h2>Edit Service</h2>
-<form method="post" enctype="multipart/form-data">  
-    {% csrf_token %}
+    <h2>Edit Service</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-    <input type="text" name="service_title" id="service_title" value="{{ service.service_title }}"
-        placeholder="Enter Service Title" required>
+        <input type="text" name="service_title" id="service_title" value="{{ service.service_title }}"
+            placeholder="Enter Service Title" required>
 
-    <textarea name="service_description" id="service_description"
-        placeholder="Enter Service Description">{{ service.service_description }}</textarea>
+        <input type="text" name="madatory_field" id="madatory_field" placeholder="This field is mandatory">
 
-    <input type="file" name="service_image" id="service_image">
-    {% if service.service_image %}
-    <img src="{{ service.service_image.url }}" alt="{{ service.service_title }}" width=200 height=200 />
-    {% endif %}
+        <textarea name="service_description" id="service_description"
+            placeholder="Enter Service Description">{{ service.service_description }}</textarea>
 
-    <input type="submit" class="submit" value="Update Service">
+        <input type="file" name="service_icon" id="service_icon">
+        {% if service.service_icon %}
+        <img src="{{ service.service_icon.url }}" alt="{{ service.service_title }}" width=200 height=200 />
+        {% endif %}
+
+
+        <input type="file" name="service_image" id="service_image">
+        {% if service.service_image %}
+        <img src="{{ service.service_image.url }}" alt="{{ service.service_title }}" width=200 height=200 />
+        {% endif %}
+
+        <input type="submit" class="submit" value="Update Service">
 </div>
 
 {% endblock %}

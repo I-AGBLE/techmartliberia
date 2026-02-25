@@ -160,6 +160,9 @@ def edit_service(request, service_id):
     if request.method == 'POST':
         service.service_title = request.POST.get('service_title')
         service.service_description = request.POST.get('service_description')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout')
         if 'service_image' in request.FILES:
             # Delete old image file if it exists
             if service.service_image and hasattr(service.service_image, 'path'):
