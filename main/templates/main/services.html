@@ -55,6 +55,14 @@
 
 
     </div>
+
+    {% if services|length == 0 %}
+    <div class="empty_notification">
+        <center>
+            <p>No service available.</p>
+        </center>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}
