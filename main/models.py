@@ -21,7 +21,7 @@ class Hero_Section(models.Model):
     hero_text_title = models.CharField(max_length=60)
     hero_text_body = models.TextField(max_length=300)
     hero_image = models.ImageField(upload_to=image_upload_path)
-    madatory_field = models.CharField(max_length=20)
+    mandatory_field = models.CharField(max_length=20)
 
     def __str__(self):
         return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
@@ -33,7 +33,7 @@ class About_Us_Hero(models.Model):
     about_hero_text_title = models.CharField(max_length=60)
     about_hero_text_body = models.TextField(max_length=300)
     about_hero_image = models.ImageField(upload_to=image_upload_path)
-    madatory_field = models.CharField(max_length=20)
+    mandatory_field = models.CharField(max_length=20)
     
     def __str__(self):
         return f"{self.about_hero_text_title} - {self.about_hero_text_body[:50]} ..."
@@ -76,3 +76,12 @@ class why_us(models.Model):
         return f"{self.why_us_title} - {self.why_us_desc[:50]} ..."
 
 
+class Contact_Us(models.Model):
+    name = models.CharField(max_length=60)
+    email = models.EmailField()
+    tel = models.CharField(max_length=15)
+    message = models.TextField(max_length=2000)
+    mandatory_field = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f"{self.name} - {self.email}"

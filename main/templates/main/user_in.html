@@ -23,9 +23,9 @@
     <form action="{% url 'main:user_in' %}" method="post">
         {% csrf_token %}
        
-        <input type="text" id="username" name="username" placeholder="Enter Username" autofocus required>
-        <input type="password" id="password" name="password" placeholder="Enter Password" required>
-        <input type="hidden" name="mandatory_field" placeholder="This field is required">
+        <input type="text" name="username" placeholder="Enter Username" autofocus required>
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <input type="text" id="mandatory_field" name="mandatory_field" placeholder="This field is required">
         
         <input type="submit" class="submit" value="Login">
     </form>

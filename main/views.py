@@ -9,7 +9,7 @@ from django.conf import settings
 
 
 
-from main.models import About_Us_Hero, Hero_Section, Service, Team_Member, why_us
+from main.models import About_Us_Hero, Contact_Us, Hero_Section, Service, Team_Member, why_us
 
 
 
@@ -134,8 +134,8 @@ def edit_hero(request, hero_id):
     if request.method == 'POST':
         hero.hero_text_title = request.POST.get('hero_text_title')
         hero.hero_text_body = request.POST.get('hero_text_body')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')
         if 'hero_image' in request.FILES:
             # Delete old image file if it exists
@@ -160,8 +160,8 @@ def edit_service(request, service_id):
     if request.method == 'POST':
         service.service_title = request.POST.get('service_title')
         service.service_description = request.POST.get('service_description')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')
         if 'service_image' in request.FILES:
             # Delete old image file if it exists
@@ -188,8 +188,8 @@ def edit_about_us_hero(request, about_hero_id):
     if request.method == 'POST':
         about_hero.about_hero_text_title = request.POST.get('about_hero_text_title')
         about_hero.about_hero_text_body = request.POST.get('about_hero_text_body')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')
         if 'about_hero_image' in request.FILES:
             # Delete old image file if it exists
@@ -213,8 +213,8 @@ def edit_admin_team_member(request, member_id):
     if request.method == 'POST':
         member.name = request.POST.get('name')
         member.position = request.POST.get('position')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')
         if 'image' in request.FILES:
             # Delete old image file if it exists
@@ -241,8 +241,8 @@ def edit_admin_why_us(request, why_us_id):
     if request.method == 'POST':
         why.why_us_title = request.POST.get('why_us_title')
         why.why_us_desc = request.POST.get('why_us_desc')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')
         if 'why_us_icon' in request.FILES:
             # Delete old image file if it exists
@@ -267,15 +267,15 @@ def add_new_service(request):
         service_description = request.POST.get('service_description')
         service_image = request.FILES.get('service_image')
         service_icon = request.FILES.get('service_icon')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')       
         new_service = Service.objects.create(
             service_title=service_title,
             service_description=service_description,
             service_image=service_image,
             service_icon=service_icon,
-            mandatory_field=madatory_field
+            mandatory_field=mandatory_field
         )
         return redirect('main:service_page', service_id=new_service.id)
     return render(request, 'main/add_new_service.html')
@@ -287,8 +287,8 @@ def add_new_team_member(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         position = request.POST.get('position')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout') 
         image = request.FILES.get('image')
         instagram_url = request.POST.get('instagram_url')
@@ -301,7 +301,7 @@ def add_new_team_member(request):
             instagram_url=instagram_url,
             twitter_url=twitter_url,
             linkedin_url=linkedin_url,
-            mandatory_field=madatory_field
+            mandatory_field=mandatory_field
         )
         return redirect('main:user_dash')
     return render(request, 'main/add_new_team_member.html')
@@ -313,15 +313,15 @@ def add_new_why_us(request):
     if request.method == 'POST':
         why_us_title = request.POST.get('why_us_title')
         why_us_desc = request.POST.get('why_us_desc')
-        madatory_field = request.POST.get('madatory_field', '')
-        if madatory_field:
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
             return redirect('main:logout')        
         why_us_icon = request.FILES.get('why_us_icon')
         new_why = why_us.objects.create(
             why_us_title=why_us_title,
             why_us_desc=why_us_desc,
             why_us_icon=why_us_icon,
-            mandatory_field=madatory_field
+            mandatory_field=mandatory_field
         )
         return redirect('main:user_dash')
     return render(request, 'main/add_new_why_us.html')
@@ -365,6 +365,8 @@ def delete_team_member(request, member_id):
     return redirect('main:user_dash')
 
 
+
+
 @login_required
 def delete_why_us(request, why_us_id):
     why = why_us.objects.get(pk=why_us_id)
@@ -385,3 +387,24 @@ def logout(request):
     from django.contrib.auth import logout
     logout(request)
     return redirect('main:index')
+
+
+
+
+def contact_us(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        tel = request.POST.get('tel')
+        message = request.POST.get('message')
+        mandatory_field = request.POST.get('mandatory_field', '')
+        if mandatory_field:
+            return redirect('main:logout') 
+        new_contact_message = Contact_Us.objects.create(
+            name=name,
+            email=email,
+            tel=tel,
+            message=message,
+            mandatory_field=mandatory_field
+        )
+    return render(request, 'main/contact.html')

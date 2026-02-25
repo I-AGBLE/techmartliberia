@@ -7,7 +7,8 @@
         <span>TechMart Liberia: </span> Your Gateway to Technology in Liberia
     </h1>
     <p>
-        Welcome to TechMart Liberia, your one-stop shop for all things tech in Liberia. Explore our wide range of products, services, and events. Stay connected with us for the latest updates and innovations in technology.
+        Welcome to TechMart Liberia, your one-stop shop for all things tech in Liberia. Explore our wide range of
+        products, services, and events. Stay connected with us for the latest updates and innovations in technology.
     </p>
 </div>
 
@@ -37,13 +38,16 @@
         </div>
 
         <div class="contact-form">
-            <form action="">
-                <input type="name" placeholder="Full Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Telephone" required>
-                <textarea name="" cols="35" rows="10" placeholder="Your Message" required></textarea>
+            <form  action="{% url 'main:contact_us' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="tel" placeholder="Telephone" required>
+                <input type="text" class="mandatory_field" name="mandatory_field" id="mandatory_field" value="{{ member.mandatory_field }}"
+                    placeholder="This field is mandatory">
+                <textarea name="message" cols="35" rows="10" placeholder="Your Message" required></textarea>
                 <center>
-                <input type="submit" value="Send Message" class="submit" required>
+                    <input type="submit" value="Send Message" class="submit" required>
                 </center>
             </form>
         </div>
@@ -51,6 +55,6 @@
     </section>
 
 </contact>
-   
+
 
 {% endblock %}
