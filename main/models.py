@@ -55,6 +55,7 @@ class Service(models.Model):
 class Team_Member(models.Model):
     name = models.CharField(max_length=60)
     position = models.CharField(max_length=60)
+    mandatory_field = models.CharField(max_length=20)
     image = models.ImageField(upload_to=image_upload_path)
     instagram_url = models.URLField(blank=True, null=True)
     twitter_url = models.URLField(blank=True, null=True)
@@ -69,6 +70,7 @@ class why_us(models.Model):
     why_us_icon = models.ImageField(upload_to=image_upload_path)
     why_us_title = models.TextField(max_length=50)
     why_us_desc = models.TextField(max_length=500)
+    mandatory_field = models.CharField(max_length=20)
 
     def __str__(self):
         return f"{self.why_us_title} - {self.why_us_desc[:50]} ..."

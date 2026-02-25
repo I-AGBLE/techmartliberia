@@ -213,6 +213,9 @@ def edit_admin_team_member(request, member_id):
     if request.method == 'POST':
         member.name = request.POST.get('name')
         member.position = request.POST.get('position')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout')
         if 'image' in request.FILES:
             # Delete old image file if it exists
             if member.image and hasattr(member.image, 'path'):
@@ -238,6 +241,9 @@ def edit_admin_why_us(request, why_us_id):
     if request.method == 'POST':
         why.why_us_title = request.POST.get('why_us_title')
         why.why_us_desc = request.POST.get('why_us_desc')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout')
         if 'why_us_icon' in request.FILES:
             # Delete old image file if it exists
             if why.why_us_icon and hasattr(why.why_us_icon, 'path'):

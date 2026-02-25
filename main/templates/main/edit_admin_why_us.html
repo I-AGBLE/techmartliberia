@@ -1,27 +1,29 @@
 {% extends 'main/layout.html' %}
 {% load static %}
 
-{% block content %} 
+{% block content %}
 <div class="form_field">
-<h2>Edit Why Us Section</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+    <h2>Edit Why Us Section</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
-    <input type="text" name="why_us_title" id="why_us_title" value="{{ why.why_us_title }}"
-        placeholder="Enter Why Us Title" required>
+        <input type="text" name="why_us_title" id="why_us_title" value="{{ why.why_us_title }}"
+            placeholder="Enter Why Us Title" required>
+        <input type="text" name="madatory_field" id="madatory_field" value="{{ member.mandatory_field }}"
+            placeholder="This field is mandatory">
 
-    <input type="file" name="why_us_icon" id="why_us_icon">
-    {% if why.why_us_icon %}
+        <input type="file" name="why_us_icon" id="why_us_icon">
+        {% if why.why_us_icon %}
         <div class="image_preview">
             <img src="{{ why.why_us_icon.url }}" alt="Current Icon Preview" width=200 height=200 />
         </div>
-    {% endif %}
+        {% endif %}
 
 
-    <textarea name="why_us_desc" id="why_us_desc"
-        placeholder="Enter Why Us Description">{{ why.why_us_desc }}</textarea>
+        <textarea name="why_us_desc" id="why_us_desc"
+            placeholder="Enter Why Us Description">{{ why.why_us_desc }}</textarea>
 
-    <input type="submit" class="submit" value="Update">
+        <input type="submit" class="submit" value="Update">
 </div>
 
 {% endblock %}
