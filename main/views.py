@@ -267,11 +267,15 @@ def add_new_service(request):
         service_description = request.POST.get('service_description')
         service_image = request.FILES.get('service_image')
         service_icon = request.FILES.get('service_icon')
+        madatory_field = request.POST.get('madatory_field', '')
+        if madatory_field:
+            return redirect('main:logout')       
         new_service = Service.objects.create(
             service_title=service_title,
             service_description=service_description,
             service_image=service_image,
-            service_icon=service_icon
+            service_icon=service_icon,
+            mandatory_field=madatory_field
         )
         return redirect('main:service_page', service_id=new_service.id)
     return render(request, 'main/add_new_service.html')
