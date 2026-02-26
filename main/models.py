@@ -2,8 +2,9 @@ from django.db import models
 import os
 from datetime import datetime
 
-# Create your models here.
 
+
+# Create your models here.
 def image_upload_path(instance, filename):
     # Get the file extension
     ext = filename.split('.')[-1]
@@ -28,20 +29,20 @@ class Hero_Section(models.Model):
 
 
 
-
+# -------------------------------  About Page Hero Secion Model ---------------------------------- #
 class About_Us_Hero(models.Model):
     about_hero_text_title = models.CharField(max_length=110)
     about_hero_text_body = models.TextField(max_length=650)
     about_hero_image = models.ImageField(upload_to=image_upload_path)
     mandatory_field = models.CharField(max_length=20, blank=True)
 
-    
     def __str__(self):
         return f"{self.about_hero_text_title} - {self.about_hero_text_body[:50]} ..."
 
 
 
 
+# -------------------------------  Services Secion Model ---------------------------------- #
 class Service(models.Model):
     service_title = models.CharField(max_length=110)
     service_description = models.TextField(max_length=5000)
@@ -53,6 +54,9 @@ class Service(models.Model):
         return f"{self.service_title} - {self.service_description[:50]} ..."
 
 
+
+
+# -------------------------------  Meet Our Team Secion Model ---------------------------------- #
 class Team_Member(models.Model):
     name = models.CharField(max_length=35)
     position = models.CharField(max_length=35)
@@ -67,6 +71,8 @@ class Team_Member(models.Model):
 
 
 
+
+# -------------------------------  Why Us Secion Model ---------------------------------- #
 class why_us(models.Model):
     why_us_icon = models.ImageField(upload_to=image_upload_path)
     why_us_title = models.TextField(max_length=60)
@@ -77,6 +83,9 @@ class why_us(models.Model):
         return f"{self.why_us_title} - {self.why_us_desc[:50]} ..."
 
 
+
+
+# -------------------------------  Contact Form Secion Model ---------------------------------- #
 class Contact_Us(models.Model):
     name = models.CharField(max_length=60)
     email = models.EmailField()
