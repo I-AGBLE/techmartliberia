@@ -15,9 +15,9 @@
         <tbody>
             {% for contact in client_contact %}
             <tr>
-                <td>{{ contact.name }}</td>
-                <td>{{ contact.email }}</td>
-                <td>{{contact.tel }}</td>
+                <td>{{ contact.name|truncatechars:20 }}</td>
+                <td>{{ contact.email|truncatechars:20 }}</td>
+                <td>{{contact.tel|truncatechars:15 }}</td>
                 <td><a href="{% url 'main:contact_detail' contact.id %}"><i class="fa-solid fa-eye"></i></a></td>
             </tr>
             {% endfor %}
