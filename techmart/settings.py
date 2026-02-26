@@ -32,7 +32,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'main.middleware.AutoLogoutMiddleware',
 ]
+
+# cookie timings for every activity
+SESSION_COOKIE_AGE = 600  # 10 minute
+SESSION_SAVE_EVERY_REQUEST = True
+
 
 ROOT_URLCONF = 'techmart.urls'
 

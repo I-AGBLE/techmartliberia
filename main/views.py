@@ -15,7 +15,7 @@ from main.models import About_Us_Hero, Contact_Us, Hero_Section, Service, Team_M
 
 
 
-# -------------------------------  Home Page Secion View ---------------------------------- #
+# -------------------------------  Home Page Contents  ---------------------------------- #
 def index(request):
     return render(request, 'main/index.html', {
         'hero_section': Hero_Section.objects.all(),
@@ -23,7 +23,9 @@ def index(request):
         'services': Service.objects.all(),
     })
 
-# -------------------------------  Contact Page View ---------------------------------- #
+
+
+# -------------------------------  Contact Page Route  ---------------------------------- #
 def contact(request):
     return render(request, 'main/contact.html')
 
@@ -31,9 +33,7 @@ def contact(request):
 
 
 
-
-
-# -------------------------------  About Page View ---------------------------------- #
+# -------------------------------  About Page Contents ---------------------------------- #
 def about(request):
     return render(request, 'main/about.html', {
         'why_us': why_us.objects.all(),
@@ -45,22 +45,22 @@ def about(request):
 
 
 
-
-# -------------------------------  Services Section View ---------------------------------- #
+# -------------------------------  Services Page Contents ---------------------------------- #
 def services(request):
     return render(request, 'main/services.html', {
         'hero_section': Hero_Section.objects.all(),
         'services': Service.objects.all()
     })
-    
-    
+
+
+
+
+# -------------------------------  Individual Service View  ---------------------------------- #
 def service_page(request, service_id):
     service = Service.objects.get(pk=service_id)
     return render(request, 'main/service_page.html', {
         "service": service
     })
-
-
 
 
 
@@ -112,7 +112,8 @@ def user_in(request):
 
 
 
-# -------------------------------  Login Page View ---------------------------------- #
+
+# -------------------------------  Admin Dashboard Contents  ---------------------------------- #
 @login_required
 def user_dash(request):
     return render(request, 'main/user_dash.html', {
@@ -122,7 +123,6 @@ def user_dash(request):
         'about_hero': About_Us_Hero.objects.all(),
         'why_us': why_us.objects.all(),
     })
-
 
 
 
@@ -154,6 +154,9 @@ def edit_hero(request, hero_id):
 
 
 
+
+
+
 # -------------------------------  Edit Service Section ---------------------------------- #
 @login_required
 def edit_service(request, service_id):
@@ -182,6 +185,9 @@ def edit_service(request, service_id):
 
 
 
+
+
+
 # -------------------------------  Edit About Us Hero Section ---------------------------------- #
 @login_required
 def edit_about_us_hero(request, about_hero_id):
@@ -205,6 +211,9 @@ def edit_about_us_hero(request, about_hero_id):
         about_hero.save()
         return redirect('main:about')
     return render(request, 'main/edit_about_us_hero.html', {'about_hero': about_hero})
+
+
+
 
 
 
@@ -236,6 +245,9 @@ def edit_admin_team_member(request, member_id):
 
 
 
+
+
+# -------------------------------  Eidt Admin Why Us Section View ---------------------------------- #
 @login_required
 def edit_admin_why_us(request, why_us_id):
     why = why_us.objects.get(pk=why_us_id)
@@ -261,6 +273,9 @@ def edit_admin_why_us(request, why_us_id):
 
 
 
+
+
+# -------------------------------  Add New Service  ---------------------------------- #
 @login_required
 def add_new_service(request):
     if request.method == 'POST':
@@ -283,6 +298,10 @@ def add_new_service(request):
 
 
 
+
+
+
+# -------------------------------  Add New Team Member ---------------------------------- #
 @login_required
 def add_new_team_member(request):
     if request.method == 'POST':
@@ -309,6 +328,10 @@ def add_new_team_member(request):
 
 
 
+
+
+
+# -------------------------------  Add New Why Us ---------------------------------- #
 @login_required
 def add_new_why_us(request):
     if request.method == 'POST':
@@ -330,6 +353,9 @@ def add_new_why_us(request):
 
 
 
+
+
+# -------------------------------  Delete Service  ---------------------------------- #
 @login_required
 def delete_service(request, service_id):
     service = Service.objects.get(pk=service_id)
@@ -352,6 +378,10 @@ def delete_service(request, service_id):
 
 
 
+
+
+
+# -------------------------------  Delete Team Member  ---------------------------------- #
 @login_required
 def delete_team_member(request, member_id):
     member = Team_Member.objects.get(pk=member_id)
@@ -368,6 +398,9 @@ def delete_team_member(request, member_id):
 
 
 
+
+
+# -------------------------------  Delete Why Us  ---------------------------------- #
 @login_required
 def delete_why_us(request, why_us_id):
     why = why_us.objects.get(pk=why_us_id)
@@ -384,6 +417,8 @@ def delete_why_us(request, why_us_id):
 
 
 
+
+# -------------------------------  Logout Function  ---------------------------------- #
 def logout(request):
     from django.contrib.auth import logout
     logout(request)
@@ -392,6 +427,8 @@ def logout(request):
 
 
 
+
+# -------------------------------  Contact Form Logic  ---------------------------------- #
 def contact_us(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -411,12 +448,22 @@ def contact_us(request):
     return render(request, 'main/contact.html')
 
 
+
+
+
+
+# -------------------------------  Contact Form List Page  ---------------------------------- #
 @login_required
 def client_contact(request):
     return render(request, 'main/client_contact.html', {
         'client_contact': Contact_Us.objects.all().order_by('-id')
     })
-    
+
+
+
+
+
+# -------------------------------  Contact Form Message Detail Page  ---------------------------------- #
 @login_required
 def contact_detail(request, contact_id):
     contact = Contact_Us.objects.get(pk=contact_id)
