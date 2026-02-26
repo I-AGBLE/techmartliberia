@@ -5,7 +5,8 @@
 {% block content %}
 
 {% if about_hero %}
-<div class="hero_section" style="background: url('{{ about_hero.0.about_hero_image.url }}') center center/cover no-repeat;">
+<div class="hero_section"
+    style="background: url('{{ about_hero.0.about_hero_image.url }}') center center/cover no-repeat;">
     {% for about in about_hero %}
     <div class="hero_text">
         <div class="hero_text_title">
@@ -29,13 +30,13 @@
     <center>
         <p>No hero section content available for the About Page!</p>
     </center>
-{% endif %}
+    {% endif %}
 
 
 
 
 
-<div class="catchwords">
+    <div class="catchwords">
         <ul>
             <li>Innovate</li>
             <li>Build</li>
@@ -43,62 +44,62 @@
             <li>Scale</li>
             <li>Secure</li>
         </ul>
-</div>
-
-
-
-<div class="why_us_section">
-    <div class="why_us_images">
-        <div class="why_us_images_top">
-            <img src="{% static 'main/images/whyus1.jpeg' %}" id="small" alt="Why Us Image 1">
-            <img src="{% static 'main/images/whyus2.jpeg' %}" alt="Why Us Image 2">
-        </div>
-
-        <div class="why_us_images_bottom">
-            <img src="{% static 'main/images/whyus3.jpeg' %}" alt="Why Us Image 3">
-            <img src="{% static 'main/images/whyus4.jpeg' %}" id="small" alt="Why Us Image 4">
-        </div>
     </div>
 
-    <div class="why_us_texts">
-        <div class="why_us_title">
-            <h2>Why <span> Choose Us?</span></h2>
-        </div>
 
-        {% for why in why_us %}
-        <div class="why_us">
-            <div class="why_us_icon">
-                <img src="{{ why.why_us_icon.url }}" alt="{{ why.why_us_title }} Icon">
+
+    <div class="why_us_section">
+        <div class="why_us_images">
+            <div class="why_us_images_top">
+                <img src="{% static 'main/images/whyus1.jpeg' %}" id="small" alt="Why Us Image 1">
+                <img src="{% static 'main/images/whyus2.jpeg' %}" alt="Why Us Image 2">
             </div>
 
-            <div class="why_us_text">
-                <div class="why_us_title">
-                    <h3>{{ why.why_us_title }}</h3>
-                </div>
-                <div class="why_us_desc">
-                    <p>
-                        {{ why.why_us_desc }}
-                    </p>
-                </div>
+            <div class="why_us_images_bottom">
+                <img src="{% static 'main/images/whyus3.jpeg' %}" alt="Why Us Image 3">
+                <img src="{% static 'main/images/whyus4.jpeg' %}" id="small" alt="Why Us Image 4">
             </div>
         </div>
 
-        {% endfor %}
+        <div class="why_us_texts">
+            <div class="why_us_title">
+                <h2>Why <span> Choose Us?</span></h2>
+            </div>
+
+            {% for why in why_us %}
+            <div class="why_us">
+                <div class="why_us_icon">
+                    <img src="{{ why.why_us_icon.url }}" alt="{{ why.why_us_title }} Icon">
+                </div>
+
+                <div class="why_us_text">
+                    <div class="why_us_title">
+                        <h3>{{ why.why_us_title }}</h3>
+                    </div>
+                    <div class="why_us_desc">
+                        <p>
+                            {{ why.why_us_desc }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
 
 
-        {% if why_us|length == 0 %}
-        <div class="empty_notification">
-            <center>
-                <p>No why us items available.</p>
-            </center>
+            {% if why_us|length == 0 %}
+            <div class="empty_notification">
+                <center>
+                    <p>No why us items available.</p>
+                </center>
+            </div>
+            {% endif %}
+            <div class="hero_link">
+                <a href="{% url 'main:services' %}">Explore Our Services</a>
+            </div>
         </div>
-        {% endif %}
-        <div class="hero_link">
-            <a href="{% url 'main:services' %}">Explore Our Services</a>
-        </div>
+
     </div>
-
-</div>
 
 
 
@@ -115,10 +116,14 @@
                     <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture">
                 </div>
 
-                <div class="team_member-info">
-                    <h3>{{ member.name }}</h3>
-                    <p>{{ member.position }}</p>
-                </div>
+
+                <center>
+                    <div class="team_member-info">
+                        <h4>{{ member.name }}</h4>
+                        <p>{{ member.position }}</p>
+                    </div>
+                </center>
+
 
                 <div class="team_member-socials">
                     <a href="{{ member.instagram_url }}" target="_blank">

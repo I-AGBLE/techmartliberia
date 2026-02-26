@@ -22,8 +22,8 @@ from main.models import About_Us_Hero, Contact_Us, Hero_Section, Service, Team_M
 def index(request):
     return render(request, 'main/index.html', {
         'hero_section': Hero_Section.objects.all(),
-        'team_members': Team_Member.objects.all(),
-        'services': Service.objects.all(),
+        'team_members': Team_Member.objects.order_by('?'),
+        'services': Service.objects.order_by('?'),
     })
 
 

@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
+
+# middleware to auto log user out after 10 minutes 
 class AutoLogoutMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
