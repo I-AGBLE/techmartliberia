@@ -9,12 +9,12 @@
         {% csrf_token %}
 
         <input type="text" name="about_hero_text_title" id="about_hero_text_title"
-            value="{{ about_hero.about_hero_text_title }}" placeholder="Enter About Us Hero Title" required>
+            value="{{ about_hero.about_hero_text_title }}" placeholder="Enter About Us Hero Title" maxlength="110" required>
 
         <input type="text" name="mandatory_field" id="mandatory_field" value="{{ about_hero.mandatory_field }}" placeholder="This field is mandatory">
 
         <textarea name="about_hero_text_body" id="about_hero_text_body"
-            placeholder="Enter About Us Hero Text">{{ about_hero.about_hero_text_body }}</textarea>
+            placeholder="Enter About Us Hero Text" maxlength="650">{{ about_hero.about_hero_text_body }}</textarea>
 
         <input type="file" name="about_hero_image" id="about_hero_image">
         {% if about_hero.about_hero_image %}

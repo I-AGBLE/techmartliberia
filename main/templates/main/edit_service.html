@@ -8,12 +8,13 @@
         {% csrf_token %}
 
         <input type="text" name="service_title" id="service_title" value="{{ service.service_title }}"
-            placeholder="Enter Service Title" required>
+            placeholder="Enter Service Title" maxlength="110" required>
 
-        <input type="text" name="mandatory_field" id="mandatory_field" value="{{ service.mandatory_field }}" placeholder="This field is mandatory">
+        <input type="text" name="mandatory_field" id="mandatory_field" value="{{ service.mandatory_field }}"
+            placeholder="This field is mandatory">
 
-        <textarea name="service_description" id="service_description"
-            placeholder="Enter Service Description">{{ service.service_description }}</textarea>
+        <textarea name="service_description" id="service_description" placeholder="Enter Service Description"
+            maxlength="5000">{{ service.service_description }}</textarea>
 
         <input type="file" name="service_icon" id="service_icon">
         {% if service.service_icon %}

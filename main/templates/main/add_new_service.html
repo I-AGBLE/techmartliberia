@@ -7,9 +7,9 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <input type="text" name="service_title" id="service_title" placeholder="Enter Service Title" required>
+        <input type="text" name="service_title" id="service_title" maxlength="110" placeholder="Enter Service Title" required>
 
-        <textarea name="service_description" id="service_description" placeholder="Enter Service Description"></textarea>
+        <textarea name="service_description" id="service_description" maxlength="5000" placeholder="Enter Service Description"></textarea>
 
         <input type="file" name="service_image" id="service_image">
 

@@ -18,10 +18,10 @@ def image_upload_path(instance, filename):
 
 # -------------------------------  Home Page Hero Secion Model ---------------------------------- #
 class Hero_Section(models.Model):
-    hero_text_title = models.CharField(max_length=60)
-    hero_text_body = models.TextField(max_length=300)
+    hero_text_title = models.CharField(max_length=110)
+    hero_text_body = models.TextField(max_length=650)
     hero_image = models.ImageField(upload_to=image_upload_path)
-    mandatory_field = models.CharField(max_length=20)
+    mandatory_field = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
@@ -30,10 +30,11 @@ class Hero_Section(models.Model):
 
 
 class About_Us_Hero(models.Model):
-    about_hero_text_title = models.CharField(max_length=60)
-    about_hero_text_body = models.TextField(max_length=300)
+    about_hero_text_title = models.CharField(max_length=110)
+    about_hero_text_body = models.TextField(max_length=650)
     about_hero_image = models.ImageField(upload_to=image_upload_path)
-    mandatory_field = models.CharField(max_length=20)
+    mandatory_field = models.CharField(max_length=20, blank=True)
+
     
     def __str__(self):
         return f"{self.about_hero_text_title} - {self.about_hero_text_body[:50]} ..."
@@ -42,24 +43,24 @@ class About_Us_Hero(models.Model):
 
 
 class Service(models.Model):
-    service_title = models.CharField(max_length=60)
-    service_description = models.TextField(max_length=4000)
+    service_title = models.CharField(max_length=110)
+    service_description = models.TextField(max_length=5000)
     service_image = models.ImageField(upload_to=image_upload_path, null=True, blank=True)
     service_icon = models.ImageField(upload_to=image_upload_path, null=True, blank=True)
-    mandatory_field = models.CharField(max_length=20)
+    mandatory_field = models.CharField(max_length=20, blank=True)
     
     def __str__(self):
         return f"{self.service_title} - {self.service_description[:50]} ..."
 
 
 class Team_Member(models.Model):
-    name = models.CharField(max_length=60)
-    position = models.CharField(max_length=60)
-    mandatory_field = models.CharField(max_length=20)
+    name = models.CharField(max_length=35)
+    position = models.CharField(max_length=35)
     image = models.ImageField(upload_to=image_upload_path)
-    instagram_url = models.URLField(blank=True, null=True)
-    twitter_url = models.URLField(blank=True, null=True)
-    linkedin_url = models.URLField(blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True, max_length=255)
+    twitter_url = models.URLField(blank=True, null=True, max_length=255)
+    linkedin_url = models.URLField(blank=True, null=True, max_length=255)
+    mandatory_field = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return f"{self.name} - {self.position}"
@@ -68,9 +69,9 @@ class Team_Member(models.Model):
 
 class why_us(models.Model):
     why_us_icon = models.ImageField(upload_to=image_upload_path)
-    why_us_title = models.TextField(max_length=50)
+    why_us_title = models.TextField(max_length=60)
     why_us_desc = models.TextField(max_length=500)
-    mandatory_field = models.CharField(max_length=20)
+    mandatory_field = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return f"{self.why_us_title} - {self.why_us_desc[:50]} ..."

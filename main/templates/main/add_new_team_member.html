@@ -7,21 +7,21 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <input type="text" name="name" id="name" placeholder="Enter Member Name" required>
+        <input type="text" name="name" id="name" maxlength="35" placeholder="Enter Member Name" required>
 
-        <input type="text" name="position" id="position" placeholder="Enter Position" required>
+        <input type="text" name="position" id="position" maxlength="35" placeholder="Enter Position" required>
 
         <input type="text" name="mandatory_field" id="mandatory_field" value="{{ member.mandatory_field }}" placeholder="This field is mandatory"> 
 
         <input type="file" name="image" id="image">
 
-        <input type="url" name="instagram_url" id="instagram_url" placeholder="Instagram URL">
+        <input type="url" name="instagram_url" id="instagram_url" maxlength="255" placeholder="Instagram URL">
 
-        <input type="url" name="twitter_url" id="twitter_url" placeholder="Twitter URL">
+        <input type="url" name="twitter_url" id="twitter_url" maxlength="255" placeholder="Twitter URL">
 
-        <input type="url" name="linkedin_url" id="linkedin_url" placeholder="LinkedIn URL">
+        <input type="url" name="linkedin_url" id="linkedin_url" maxlength="255" placeholder="LinkedIn URL">
 
-        <input type="submit" class="submit" value="Add Team Member">
+        <input type="submit" class="submit" value="Add Member">
     </form>
 </div>
 {% endblock %}

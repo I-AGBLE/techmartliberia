@@ -10,12 +10,12 @@
 
 
     <input type="text" name="hero_text_title" id="hero_text_title" value="{{ hero.hero_text_title }}"
-        placeholder="Enter Hero Title" required>
+        placeholder="Enter Hero Title" maxlength="110" required>
 
     <input type="text" name="mandatory_field" id="mandatory_field" value="{{ hero.mandatory_field }}" placeholder="This field is mandatory">
 
     <textarea name="hero_text_body" id="hero_text_body"
-        placeholder="Enter Hero Text">{{ hero.hero_text_body }}</textarea>
+        placeholder="Enter Hero Text" maxlength="650" required >{{ hero.hero_text_body }}</textarea>
 
     <input type="file" name="hero_image" id="hero_image">
     {% if hero.hero_image %}
