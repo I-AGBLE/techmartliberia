@@ -1143,6 +1143,13 @@ tbody tr:hover {
   background-color: var(--text_color);
 }
 
+.messages li {
+  background-color: var(--color_danger);
+  padding: .3rem;
+  border-radius: var(--border_radius);
+  font-weight: 600;
+}
+
 /* --------------------------------- Footer Page Styles ----------------------------------------------- */
 footer {
   background-color: var(--nav_bg);

@@ -7,6 +7,8 @@ from django.shortcuts import redirect
 import os
 from django.conf import settings
 
+from django.core.exceptions import ValidationError
+from django.contrib import messages
 
 
 from main.models import About_Us_Hero, Contact_Us, Hero_Section, Service, Team_Member, why_us
@@ -22,6 +24,8 @@ def index(request):
         'team_members': Team_Member.objects.all(),
         'services': Service.objects.all(),
     })
+
+
 
 
 
@@ -51,6 +55,7 @@ def services(request):
         'hero_section': Hero_Section.objects.all(),
         'services': Service.objects.all()
     })
+
 
 
 
@@ -128,31 +133,43 @@ def user_dash(request):
 
 
 
+
+
 # -------------------------------  Edit Hero Section ---------------------------------- #
 @login_required
 def edit_hero(request, hero_id):
     hero = Hero_Section.objects.get(pk=hero_id)
+    
     if request.method == 'POST':
         hero.hero_text_title = request.POST.get('hero_text_title')
         hero.hero_text_body = request.POST.get('hero_text_body')
-        mandatory_field = request.POST.get('mandatory_field', '')
-        if mandatory_field:
-            return redirect('main:logout')
+        validation_passed = True  # Flag to track if we can redirect
+
         if 'hero_image' in request.FILES:
-            # Delete old image file if it exists
-            if hero.hero_image and hasattr(hero.hero_image, 'path'):
-                old_image_path = hero.hero_image.path
-                if os.path.isfile(old_image_path):
-                    try:
-                        os.remove(old_image_path)
-                    except Exception:
-                        pass
-            hero.hero_image = request.FILES['hero_image']
-        hero.save()
-        return redirect('main:index')
+            new_image = request.FILES['hero_image']
+            # Validate image format
+            valid_extensions = ['jpeg', 'jpg', 'png']
+            extension = new_image.name.split('.')[-1].lower()
+            
+            if extension not in valid_extensions:
+                messages.error(request, "Unsupported image format. Please upload JPEG, JPG, or PNG.")
+                validation_passed = False
+            else:
+                # Delete old image if replacing
+                if hero.hero_image and hasattr(hero.hero_image, 'path'):
+                    hero.hero_image.delete(save=False)
+                hero.hero_image = new_image
+        
+        if validation_passed:
+            try:
+                hero.full_clean()  # Validate all model fields
+                hero.save()
+                return redirect('main:index')  # Redirect on success
+            except ValidationError as e:
+                messages.error(request, f"Validation error: {e}")
+    
+    # If validation fails or GET request, remain on edit page
     return render(request, 'main/edit_hero.html', {'hero': hero})
-
-
 
 
 

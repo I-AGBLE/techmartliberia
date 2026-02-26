@@ -2,9 +2,10 @@ from django.db import models
 import os
 from datetime import datetime
 
+from django.core.exceptions import ValidationError
 
 
-# Create your models here.
+# Definition of unique file names
 def image_upload_path(instance, filename):
     # Get the file extension
     ext = filename.split('.')[-1]
@@ -17,7 +18,13 @@ def image_upload_path(instance, filename):
 
 
 
+
+
 # -------------------------------  Home Page Hero Secion Model ---------------------------------- #
+def image_upload_path(instance, filename):
+    # Your existing function
+    return f"heroes/{filename}"
+
 class Hero_Section(models.Model):
     hero_text_title = models.CharField(max_length=110)
     hero_text_body = models.TextField(max_length=650)
@@ -26,6 +33,19 @@ class Hero_Section(models.Model):
 
     def __str__(self):
         return f"{self.hero_text_title} - {self.hero_text_body[:50]} ..."
+
+    def clean(self):
+        super().clean()  # First run default validations
+
+        if self.hero_image:
+            valid_extensions = ['jpeg', 'jpg', 'png']
+            extension = self.hero_image.name.split('.')[-1].lower()
+
+            if extension not in valid_extensions:
+                raise ValidationError({
+                    'hero_image': "Unsupported image format. Please upload JPEG, JPG, or PNG."
+                })
+
 
 
 
