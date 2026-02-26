@@ -4,14 +4,30 @@
 {% block content %}
 <div class="form_field">
     <h2>Add New Why Us Section</h2>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <input type="text" name="why_us_title" id="why_us_title" maxlength="60" placeholder="Enter Why Us Title" required>
+        <input type="text" name="why_us_title" id="why_us_title" maxlength="60" placeholder="Enter Why Us Title"
+            required>
 
-        <textarea name="why_us_desc" id="why_us_desc" maxlength="500" placeholder="Enter Why Us Description" required></textarea>
+        <textarea name="why_us_desc" id="why_us_desc" maxlength="500" placeholder="Enter Why Us Description"
+            required></textarea>
 
-        <input type="text" name="mandatory_field" id="mandatory_field" value="{{ member.mandatory_field }}" placeholder="This field is mandatory"> 
+        <input type="text" name="mandatory_field" id="mandatory_field" value="{{ member.mandatory_field }}"
+            placeholder="This field is mandatory">
 
         <input type="file" name="why_us_icon" id="why_us_icon">
 

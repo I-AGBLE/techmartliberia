@@ -1148,6 +1148,7 @@ tbody tr:hover {
   padding: .3rem;
   border-radius: var(--border_radius);
   font-weight: 600;
+  margin-bottom: .3rem;
 }
 
 /* --------------------------------- Footer Page Styles ----------------------------------------------- */

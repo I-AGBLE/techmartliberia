@@ -11,6 +11,7 @@ from django.core.exceptions import ValidationError
 from django.contrib import messages
 
 
+
 from main.models import About_Us_Hero, Contact_Us, Hero_Section, Service, Team_Member, why_us
 
 
@@ -178,26 +179,71 @@ def edit_hero(request, hero_id):
 @login_required
 def edit_service(request, service_id):
     service = Service.objects.get(pk=service_id)
+    
     if request.method == 'POST':
         service.service_title = request.POST.get('service_title')
         service.service_description = request.POST.get('service_description')
         mandatory_field = request.POST.get('mandatory_field', '')
+        
         if mandatory_field:
             return redirect('main:logout')
+
+        validation_passed = True
+        temp_image = None
+        temp_icon = None
+
+        # Validate service_image (JPEG, JPG, PNG)
         if 'service_image' in request.FILES:
-            # Delete old image file if it exists
-            if service.service_image and hasattr(service.service_image, 'path'):
-                old_image_path = service.service_image.path
-                if os.path.isfile(old_image_path):
-                    try:
-                        os.remove(old_image_path)
-                    except Exception:
-                        pass
-            service.service_image = request.FILES['service_image']
+            new_image = request.FILES['service_image']
+            valid_image_extensions = ['jpeg', 'jpg', 'png']
+            extension = new_image.name.split('.')[-1].lower()
+            
+            if extension not in valid_image_extensions:
+                messages.error(request, "Unsupported service image format. Upload JPEG, JPG, or PNG.")
+                validation_passed = False
+            else:
+                temp_image = new_image  # Keep it temporarily
+
+        # Validate service_icon (SVG only)
         if 'service_icon' in request.FILES:
-            service.service_icon = request.FILES['service_icon']
-        service.save()
-        return redirect('main:service_page', service_id=service.id)
+            new_icon = request.FILES['service_icon']
+            valid_icon_extensions = ['svg', 'png']
+            extension = new_icon.name.split('.')[-1].lower()
+            
+            if extension not in valid_icon_extensions:
+                messages.error(request, "Unsupported service icon format. Only SVG and PNG allowed.")
+                validation_passed = False
+            else:
+                temp_icon = new_icon  # Keep it temporarily
+
+        # Save only if all validations passed
+        if validation_passed:
+            try:
+                service.full_clean()  # Validate all model fields
+
+                # Assign new files only after validation
+                if temp_image:
+                    # Delete old image file safely
+                    if service.service_image and hasattr(service.service_image, 'path'):
+                        old_image_path = service.service_image.path
+                        if os.path.isfile(old_image_path):
+                            try:
+                                os.remove(old_image_path)
+                            except Exception:
+                                pass
+                    service.service_image = temp_image
+
+                if temp_icon:
+                    service.service_icon = temp_icon
+
+                service.save()
+                messages.success(request, "Service updated successfully!")
+                return redirect('main:service_page', service_id=service.id)
+
+            except ValidationError as e:
+                messages.error(request, f"Validation error: {e}")
+
+    # Stay on edit page if validation fails
     return render(request, 'main/edit_service.html', {'service': service})
 
 
@@ -209,56 +255,121 @@ def edit_service(request, service_id):
 @login_required
 def edit_about_us_hero(request, about_hero_id):
     about_hero = About_Us_Hero.objects.get(pk=about_hero_id)
+    
     if request.method == 'POST':
         about_hero.about_hero_text_title = request.POST.get('about_hero_text_title')
         about_hero.about_hero_text_body = request.POST.get('about_hero_text_body')
         mandatory_field = request.POST.get('mandatory_field', '')
+        
         if mandatory_field:
             return redirect('main:logout')
+
+        validation_passed = True
+        temp_image = None  # Hold uploaded image temporarily
+
+        # Validate about_hero_image (JPEG, JPG, PNG)
         if 'about_hero_image' in request.FILES:
-            # Delete old image file if it exists
-            if about_hero.about_hero_image and hasattr(about_hero.about_hero_image, 'path'):
-                old_image_path = about_hero.about_hero_image.path
-                if os.path.isfile(old_image_path):
-                    try:
-                        os.remove(old_image_path)
-                    except Exception:
-                        pass
-            about_hero.about_hero_image = request.FILES['about_hero_image']
-        about_hero.save()
-        return redirect('main:about')
+            new_image = request.FILES['about_hero_image']
+            valid_extensions = ['jpeg', 'jpg', 'png']
+            extension = new_image.name.split('.')[-1].lower()
+            
+            if extension not in valid_extensions:
+                messages.error(request, "Unsupported image format. Upload JPEG, JPG, or PNG.")
+                validation_passed = False
+            else:
+                temp_image = new_image  # Keep temporarily
+
+        # Save only if all validations pass
+        if validation_passed:
+            try:
+                about_hero.full_clean()  # Validate all model fields
+
+                # Assign new image and safely delete old one
+                if temp_image:
+                    if about_hero.about_hero_image and hasattr(about_hero.about_hero_image, 'path'):
+                        old_image_path = about_hero.about_hero_image.path
+                        if os.path.isfile(old_image_path):
+                            try:
+                                os.remove(old_image_path)
+                            except Exception:
+                                pass
+                    about_hero.about_hero_image = temp_image
+
+                about_hero.save()
+                messages.success(request, "About Us Hero updated successfully!")
+                return redirect('main:about')
+
+            except ValidationError as e:
+                messages.error(request, f"Validation error: {e}")
+
+    # Stay on edit page if validation fails
     return render(request, 'main/edit_about_us_hero.html', {'about_hero': about_hero})
 
 
 
 
 
-
 # -------------------------------  Edit Admin Team Member Section ---------------------------------- #
+@login_required
 def edit_admin_team_member(request, member_id):
     member = Team_Member.objects.get(pk=member_id)
+
     if request.method == 'POST':
         member.name = request.POST.get('name')
         member.position = request.POST.get('position')
         mandatory_field = request.POST.get('mandatory_field', '')
+        
         if mandatory_field:
             return redirect('main:logout')
+
+        validation_passed = True
+        temp_image = None  # Temporary storage for new image
+
+        # Validate uploaded image (JPEG, JPG, PNG)
         if 'image' in request.FILES:
-            # Delete old image file if it exists
-            if member.image and hasattr(member.image, 'path'):
-                old_image_path = member.image.path
-                if os.path.isfile(old_image_path):
-                    try:
-                        os.remove(old_image_path)
-                    except Exception:
-                        pass
-            member.image = request.FILES['image']
+            new_image = request.FILES['image']
+            valid_extensions = ['jpeg', 'jpg', 'png']
+            extension = new_image.name.split('.')[-1].lower()
+
+            if extension not in valid_extensions:
+                messages.error(request, "Unsupported image format. Upload JPEG, JPG, or PNG.")
+                validation_passed = False
+            else:
+                temp_image = new_image  # Keep temporarily
+
+        # Update social links
         member.instagram_url = request.POST.get('instagram_url')
         member.twitter_url = request.POST.get('twitter_url')
         member.linkedin_url = request.POST.get('linkedin_url')
-        member.save()
-        return redirect('main:user_dash')
+
+        # Save only if validations passed
+        if validation_passed:
+            try:
+                member.full_clean()  # Validate all model fields
+
+                # Assign new image and safely delete old one
+                if temp_image:
+                    if member.image and hasattr(member.image, 'path'):
+                        old_image_path = member.image.path
+                        if os.path.isfile(old_image_path):
+                            try:
+                                os.remove(old_image_path)
+                            except Exception:
+                                pass
+                    member.image = temp_image
+
+                member.save()
+                messages.success(request, "Team member updated successfully!")
+                return redirect('main:user_dash')
+
+            except ValidationError as e:
+                messages.error(request, f"Validation error: {e}")
+
+    # Stay on edit page if validation fails
     return render(request, 'main/edit_admin_team_member.html', {'member': member})
+
+
+
 
 
 
@@ -268,25 +379,59 @@ def edit_admin_team_member(request, member_id):
 @login_required
 def edit_admin_why_us(request, why_us_id):
     why = why_us.objects.get(pk=why_us_id)
+
     if request.method == 'POST':
         why.why_us_title = request.POST.get('why_us_title')
         why.why_us_desc = request.POST.get('why_us_desc')
         mandatory_field = request.POST.get('mandatory_field', '')
+        
         if mandatory_field:
             return redirect('main:logout')
+
+        validation_passed = True
+        temp_icon = None  # Temporary storage for new icon
+
+        # Validate why_us_icon (SVG only)
         if 'why_us_icon' in request.FILES:
-            # Delete old image file if it exists
-            if why.why_us_icon and hasattr(why.why_us_icon, 'path'):
-                old_image_path = why.why_us_icon.path
-                if os.path.isfile(old_image_path):
-                    try:
-                        os.remove(old_image_path)
-                    except Exception:
-                        pass
-            why.why_us_icon = request.FILES['why_us_icon']
-        why.save()
-        return redirect('main:user_dash')
+            new_icon = request.FILES['why_us_icon']
+            valid_extensions = ['svg', 'png']
+            extension = new_icon.name.split('.')[-1].lower()
+
+            if extension not in valid_extensions:
+                messages.error(request, "Unsupported icon format. Only SVG and PNG allowed.")
+                validation_passed = False
+            else:
+                temp_icon = new_icon  # Keep temporarily
+
+        # Save only if validations passed
+        if validation_passed:
+            try:
+                why.full_clean()  # Validate model fields
+
+                # Assign new icon and safely delete old one
+                if temp_icon:
+                    if why.why_us_icon and hasattr(why.why_us_icon, 'path'):
+                        old_image_path = why.why_us_icon.path
+                        if os.path.isfile(old_image_path):
+                            try:
+                                os.remove(old_image_path)
+                            except Exception:
+                                pass
+                    why.why_us_icon = temp_icon
+
+                why.save()
+                messages.success(request, "Why Us entry updated successfully!")
+                return redirect('main:user_dash')
+
+            except ValidationError as e:
+                messages.error(request, f"Validation error: {e}")
+
+    # Stay on edit page if validation fails
     return render(request, 'main/edit_admin_why_us.html', {'why': why})
+
+
+
+
 
 
 
@@ -301,16 +446,44 @@ def add_new_service(request):
         service_image = request.FILES.get('service_image')
         service_icon = request.FILES.get('service_icon')
         mandatory_field = request.POST.get('mandatory_field', '')
+
         if mandatory_field:
-            return redirect('main:logout')       
-        new_service = Service.objects.create(
-            service_title=service_title,
-            service_description=service_description,
-            service_image=service_image,
-            service_icon=service_icon,
-            mandatory_field=mandatory_field
-        )
-        return redirect('main:service_page', service_id=new_service.id)
+            return redirect('main:logout')
+
+        validation_passed = True
+
+        # Validate service_image
+        if service_image:
+            ext = service_image.name.split('.')[-1].lower()
+            if ext not in ['jpeg', 'jpg', 'png']:
+                messages.error(request, "Service image must be JPEG, JPG, or PNG.")
+                validation_passed = False
+
+        # Validate service_icon
+        if service_icon:
+            ext = service_icon.name.split('.')[-1].lower()
+            if ext not in ['svg', 'jpeg', 'jpg', 'png']:
+                messages.error(request, "Service icon must be SVG, JPEG, or JPG.")
+                validation_passed = False
+
+        if validation_passed:
+            try:
+                new_service = Service(
+                    service_title=service_title,
+                    service_description=service_description,
+                    service_image=service_image,
+                    service_icon=service_icon,
+                    mandatory_field=mandatory_field
+                )
+                new_service.full_clean()  # Run model-level validations
+                new_service.save()
+                messages.success(request, "New service added successfully!")
+                return redirect('main:service_page', service_id=new_service.id)
+            except ValidationError as e:
+                for field, errors in e.message_dict.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+
     return render(request, 'main/add_new_service.html')
 
 
@@ -327,22 +500,43 @@ def add_new_team_member(request):
         mandatory_field = request.POST.get('mandatory_field', '')
         if mandatory_field:
             return redirect('main:logout') 
+
         image = request.FILES.get('image')
         instagram_url = request.POST.get('instagram_url')
         twitter_url = request.POST.get('twitter_url')
         linkedin_url = request.POST.get('linkedin_url')
-        new_member = Team_Member.objects.create(
-            name=name,
-            position=position,
-            image=image,
-            instagram_url=instagram_url,
-            twitter_url=twitter_url,
-            linkedin_url=linkedin_url,
-            mandatory_field=mandatory_field
-        )
-        return redirect('main:user_dash')
-    return render(request, 'main/add_new_team_member.html')
 
+        validation_passed = True
+
+        # Validate image
+        if image:
+            ext = image.name.split('.')[-1].lower()
+            if ext not in ['jpeg', 'jpg', 'png']:
+                messages.error(request, "Member image must be JPEG, JPG, or PNG.")
+                validation_passed = False
+
+        if validation_passed:
+            try:
+                # Create instance but don't save yet
+                new_member = Team_Member(
+                    name=name,
+                    position=position,
+                    image=image,
+                    instagram_url=instagram_url,
+                    twitter_url=twitter_url,
+                    linkedin_url=linkedin_url,
+                    mandatory_field=mandatory_field
+                )
+                new_member.full_clean()  # Validate model fields
+                new_member.save()
+                messages.success(request, "New team member added successfully!")
+                return redirect('main:user_dash')
+            except ValidationError as e:
+                for field, errors in e.message_dict.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+
+    return render(request, 'main/add_new_team_member.html')
 
 
 
@@ -355,18 +549,39 @@ def add_new_why_us(request):
         why_us_title = request.POST.get('why_us_title')
         why_us_desc = request.POST.get('why_us_desc')
         mandatory_field = request.POST.get('mandatory_field', '')
+
         if mandatory_field:
             return redirect('main:logout')        
-        why_us_icon = request.FILES.get('why_us_icon')
-        new_why = why_us.objects.create(
-            why_us_title=why_us_title,
-            why_us_desc=why_us_desc,
-            why_us_icon=why_us_icon,
-            mandatory_field=mandatory_field
-        )
-        return redirect('main:user_dash')
-    return render(request, 'main/add_new_why_us.html')
 
+        why_us_icon = request.FILES.get('why_us_icon')
+        validation_passed = True
+
+        # Validate icon (PNG or SVG only)
+        if why_us_icon:
+            ext = why_us_icon.name.split('.')[-1].lower()
+            if ext not in ['png', 'svg']:
+                messages.error(request, "Why Us icon must be a PNG or SVG file.")
+                validation_passed = False
+
+        if validation_passed:
+            try:
+                # Create instance but don't save yet
+                new_why = why_us(
+                    why_us_title=why_us_title,
+                    why_us_desc=why_us_desc,
+                    why_us_icon=why_us_icon,
+                    mandatory_field=mandatory_field
+                )
+                new_why.full_clean()  # Validate model fields
+                new_why.save()
+                messages.success(request, "New Why Us entry added successfully!")
+                return redirect('main:user_dash')
+            except ValidationError as e:
+                for field, errors in e.message_dict.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+
+    return render(request, 'main/add_new_why_us.html')
 
 
 
@@ -453,17 +668,46 @@ def contact_us(request):
         tel = request.POST.get('tel')
         message = request.POST.get('message')
         mandatory_field = request.POST.get('mandatory_field', '')
+
+        # Anti-spam/mandatory field check
         if mandatory_field:
             return redirect('main:logout') 
-        new_contact_message = Contact_Us.objects.create(
-            name=name,
-            email=email,
-            tel=tel,
-            message=message,
-            mandatory_field=mandatory_field
-        )
-    return render(request, 'main/contact.html')
 
+        validation_passed = True
+
+        # Basic field validation
+        if not name:
+            messages.error(request, "Name is required!")
+            validation_passed = False
+        if not email:
+            messages.error(request, "Email is required!")
+            validation_passed = False
+        if not tel:
+            messages.error(request, "Telephone number is required!")
+            validation_passed = False
+        if not message:
+            messages.error(request, "Message is required!")
+            validation_passed = False
+
+        if validation_passed:
+            try:
+                # Create instance but don't save yet
+                new_contact_message = Contact_Us(
+                    name=name,
+                    email=email,
+                    tel=tel,
+                    message=message,
+                    mandatory_field=mandatory_field
+                )
+                new_contact_message.full_clean()  # Model-level validation
+                new_contact_message.save()
+                messages.success(request, "Your message has been sent successfully!")
+            except ValidationError as e:
+                for field, errors in e.message_dict.items():
+                    for error in errors:
+                        messages.error(request, f"{field}: {error}")
+
+    return render(request, 'main/contact.html')
 
 
 
