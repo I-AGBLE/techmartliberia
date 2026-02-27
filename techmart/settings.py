@@ -109,5 +109,5 @@ STATICFILES_DIRS = (
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/user_in/'  # or the correct path to your login page
+LOGIN_URL = '/user_in/'  
 

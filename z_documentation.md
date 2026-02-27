@@ -17,3 +17,7 @@ Implement line breaks for front end. Remarks = ?
 label = TechMart Liberia
 site_key = 6Ld4HnksAAAAAEA1WllgjmcvAxhHXV2yYyS-w6li
 secret_key - 6Ld4HnksAAAAAKsi04QRjFM1vOla825Yk56PJePn
+
+
+
+limit team members on index page to 4 and all on about page 
