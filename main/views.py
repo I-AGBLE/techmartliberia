@@ -32,7 +32,9 @@ def index(request):
 
 # -------------------------------  Contact Page Route  ---------------------------------- #
 def contact(request):
-    return render(request, 'main/contact.html')
+    return render(request, 'main/contact.html', {
+        'about_hero': About_Us_Hero.objects.all()
+    })
 
 
 

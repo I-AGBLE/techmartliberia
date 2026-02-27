@@ -2,15 +2,18 @@
 
 {% block content %}
 
+{% if about_hero %}
 <div class="contact_text">
     <h1>
         <span>TechMart Liberia: </span> Your Gateway to Technology in Liberia
     </h1>
+    {% for about in about_hero %}
     <p>
-        Welcome to TechMart Liberia, your one-stop shop for all things tech in Liberia. Explore our wide range of
-        products, services, and events. Stay connected with us for the latest updates and innovations in technology.
+        {{ about.about_hero_text_body}}
     </p>
+    {% endfor %}
 </div>
+{% endif %}
 
 <!--contact-->
 <contact>
@@ -59,7 +62,8 @@
                 <textarea name="message" cols="35" rows="10" placeholder="Your Message" required></textarea>
 
                 <!-- Google Recapture -->
-                <div class="g-recaptcha" data-sitekey="6Ld4HnksAAAAAEA1WllgjmcvAxhHXV2yYyS-w6li" data-callback="enableSubmit"> </div>
+                <div class="g-recaptcha" data-sitekey="6Ld4HnksAAAAAEA1WllgjmcvAxhHXV2yYyS-w6li"
+                    data-callback="enableSubmit"> </div>
 
                 <center>
                     <input type="submit" id="submit" value="Send Message" class="submit" disabled>

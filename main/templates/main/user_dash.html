@@ -4,6 +4,19 @@
 {% block content %}
 
 <div class="dashboard">
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
     <div class="dashboard_title">
         <h1>Welcome to the TechMart Liberia administrator dashboard, {{ user.username }}!</h1>
         <p>
@@ -13,7 +26,7 @@
             <span> contact developer</span>.
         </p>
 
-    <a href="{% url 'main:client_contact' %}" id="client_btn">Contacted List</a>
+        <a href="{% url 'main:client_contact' %}" id="client_btn">Contacted List</a>
     </div>
 
 
@@ -63,8 +76,10 @@
                     <p>{{ service.service_description|truncatewords:15 }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="{% url 'main:edit_service' service.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="{% url 'main:delete_service' service.id %}" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="{% url 'main:edit_service' service.id %}" class="edit"><i
+                            class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{% url 'main:delete_service' service.id %}" class="delete"><i
+                            class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}
@@ -93,7 +108,8 @@
                 <p>{{ about.about_hero_text_body|truncatewords:15 }}</p>
             </div>
             <div class="dashboard_links">
-                <a href="{% url 'main:edit_about_us_hero' about.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{% url 'main:edit_about_us_hero' about.id %}" class="edit"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
             </div>
         </div>
         {% endfor %}
@@ -128,8 +144,10 @@
                     <p>{{ member.role }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="{% url 'main:edit_admin_team_member' member.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="{% url 'main:delete_team_member' member.id %}" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="{% url 'main:edit_admin_team_member' member.id %}" class="edit"><i
+                            class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{% url 'main:delete_team_member' member.id %}" class="delete"><i
+                            class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}
@@ -162,8 +180,10 @@
                     <p>{{ why.why_us_desc|truncatewords:15 }}</p>
                 </div>
                 <div class="dashboard_links">
-                    <a href="{% url 'main:edit_admin_why_us' why.id %}" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="{% url 'main:delete_why_us' why.id %}" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+                    <a href="{% url 'main:edit_admin_why_us' why.id %}" class="edit"><i
+                            class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{% url 'main:delete_why_us' why.id %}" class="delete"><i
+                            class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             {% endfor %}
