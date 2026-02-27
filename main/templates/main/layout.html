@@ -10,6 +10,9 @@
     <!-- Page Title-->
     <title>Tech Mart Liberia</title>
 
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <!--Google's Material Font-->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -34,13 +37,19 @@
                 <img src="{% static 'main/images/logo.png' %}" alt="Tech Mart Liberia Logo">
             </a>
         </div>
-    
-    <div class="menu_items">
+
+        <div class="menu_items">
             <ul>
-                <li><a href="{% url 'main:index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Home</a></li>
-                <li><a href="{% url 'main:about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
-                <li><a href="{% url 'main:services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Our Services</a></li>
-                <li><a href="{% url 'main:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact Us</a></li>
+                <li><a href="{% url 'main:index' %}"
+                        class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'main:about' %}"
+                        class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="{% url 'main:services' %}"
+                        class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Our Services</a>
+                </li>
+                <li><a href="{% url 'main:contact' %}"
+                        class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact Us</a>
+                </li>
 
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'main:user_dash' %}" id="dashboard">Dashboard</a></li>

@@ -8,9 +8,10 @@ Set fix icon size for services icons. Remarks __DONE__
 
 Set image size for why us icons and justify desc text content. Remarks = __DONE__
 
-Check whether all relevant field have required constraints. Remarks = ?
+Check whether all relevant HTML field have required image and input constraints. Remarks = ?
 
-Set default image path for all image fields. Remarks = ?
+Implement line breaks for front end. Remarks = ?
 
-
-
+label = TechMart Liberia 
+site_key = 6Ld4HnksAAAAAEA1WllgjmcvAxhHXV2yYyS-w6li
+secret_key - 6Ld4HnksAAAAAKsi04QRjFM1vOla825Yk56PJePn

@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 
 
 
+
+
 # Definition of unique file names
 def image_upload_path(instance, filename):
     # Get the file extension
@@ -16,6 +18,8 @@ def image_upload_path(instance, filename):
     new_filename = f"{timestamp}_{filename}"
     # Return the path
     return os.path.join('images', new_filename)
+
+
 
 
 
@@ -46,7 +50,6 @@ class Hero_Section(models.Model):
                 raise ValidationError({
                     'hero_image': "Unsupported image format. Please upload JPEG, JPG, or PNG."
                 })
-
 
 
 
@@ -189,7 +192,6 @@ class why_us(models.Model):
                 raise ValidationError({
                     'why_us_icon': "Unsupported icon format. Only SVG allowed."
                 })
-
 
 
 

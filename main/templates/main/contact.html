@@ -57,8 +57,12 @@
                 <input type="text" class="mandatory_field" name="mandatory_field" id="mandatory_field"
                     value="{{ member.mandatory_field }}" placeholder="This field is mandatory">
                 <textarea name="message" cols="35" rows="10" placeholder="Your Message" required></textarea>
+
+                <!-- Google Recapture -->
+                <div class="g-recaptcha" data-sitekey="6Ld4HnksAAAAAEA1WllgjmcvAxhHXV2yYyS-w6li" data-callback="enableSubmit"> </div>
+
                 <center>
-                    <input type="submit" value="Send Message" class="submit" required>
+                    <input type="submit" id="submit" value="Send Message" class="submit" disabled>
                 </center>
             </form>
         </div>
@@ -67,5 +71,16 @@
 
 </contact>
 
+
+<!-- Google Recapture Script For Callback -->
+<script>
+    function enableSubmit() {
+        document.getElementById("submit").disabled = false;
+    }
+
+    function disableSubmit() {
+        document.getElementById("submit").disabled = true;
+    }
+</script>
 
 {% endblock %}
