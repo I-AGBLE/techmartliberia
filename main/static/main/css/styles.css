@@ -53,7 +53,7 @@
 }
 
 h1 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 500;
 }
 
@@ -160,6 +160,12 @@ border-radius: var(--border_radius);
 .menu_items ul li a:hover::after {
   transform: scaleX(1);
 }
+
+
+.nav_menu_button {
+  display: none;
+}
+
 
 main {
   margin-top: 3rem;
@@ -388,6 +394,7 @@ main {
   width: 100%;
   height: 100%;
   transition: var(--transition);
+  border-radius: var(--border_radius);
 }
 
 .service_title h3 {
@@ -586,6 +593,11 @@ main {
   box-shadow: var(--box_shadow);
 }
 
+.contact_form_text {
+  display: grid;
+  gap: 2rem;
+}
+
 .contact_text h4 {
   margin: 0.5rem 0;
   font-weight: 600;
@@ -597,6 +609,17 @@ main {
 
 .list {
   margin-bottom: 2rem;
+}
+.list_content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.list_content i {
+  display: flex;
+  align-items: center;
+  color: var(--color_gold);
 }
 
 .list li {
@@ -681,6 +704,7 @@ form textarea {
   grid-template-columns: 40% 60%;
   gap: 2rem;
   padding: 4rem;
+  margin-top: -1rem;
 }
 
 .why_us_images {
@@ -1191,4 +1215,329 @@ footer {
 center p {
   font-size: 0.8rem;
   padding-top: 0.9rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------- Media Queries  (Tablets)--------------------- */
+@media screen and (max-width: 1024px) {
+h1 {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: .9rem;
+}
+
+p {
+  font-size: .9rem;
+}
+
+/* --------------------------------- Nav Section Styles ----------------------------------------------- */
+nav {
+  padding: 0 2rem;
+}
+
+.nav_logo {
+  width: 3.2rem;
+  height: 3.2rem;
+  overflow: hidden;
+}
+
+.nav_logo:hover  {
+  filter: brightness(0) invert(1);
+  transition: var(--transition);
+  transform: scale(.9);
+}
+
+main {
+  padding: 0 2rem;
+}
+
+/* --------------------------------- Index Page Styles ----------------------------------------------- */
+.hero_section {
+  height: 25rem;
+}
+
+
+.hero_text {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.hero_text_body {
+  width: 60%;
+}
+
+/* --------------------------------- Catch Styles ----------------------------------------------- */
+.catchwords ul {
+  display: flex;
+  gap: 2rem;
+}
+
+
+/* --------------------------------- Services Page Styles ----------------------------------------------- */
+.services_section {
+  margin-top: 1.3rem;
+}
+
+.service_card {
+  height: 8.5rem;
+  overflow: hidden;
+}
+
+
+
+.service_icon {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+
+.service_desc p {
+  font-size: .9rem;
+}
+
+
+/* --------------------------------- Meet Our Team Styles ----------------------------------------------- */
+
+.team_container {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+
+
+
+.team_member-info {
+  gap: .1rem;
+}
+
+
+/* --------------------------------- Contact Page Styles ----------------------------------------------- */
+.contact {
+  gap: 1.1rem;
+}
+
+
+.list li {
+  margin-bottom: 0.5rem;
+}
+
+
+
+/* --------------------------------- About Page Styles ----------------------------------------------- */
+.why_us_icon {
+  border-radius: var(--border_radius);
+}
+
+
+/* --------------------------------- User Dashboard Page Styles ----------------------------------------------- */
+.dashboard {
+  margin: 3rem auto;
+}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------- Media Queries (Phones) ---------------------------------=*/
+@media screen and (max-width: 750px) {
+
+/*
+  .nav_btns {
+    display: block;
+    margin: 1rem 0;
+  }
+
+  .nav_btns btn {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: var(--text_color);
+    cursor: pointer;
+    position: fixed;
+    top: 0.9%;
+    background-color: var(--color_blue);
+    border-radius: 0.2rem;
+    height: 1.5rem;
+
+    font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 1, "opsz" 60;
+  }
+
+  .nav_items ul {
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    right: 0;
+    padding: 1rem 0.5rem;
+    background-color: var(--light_bg);
+    text-align: center;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    margin-right: 0.7rem;
+    opacity: 0.95;
+  }
+
+  .nav_items ul li {
+    display: flex;
+    animation: animateDropdown 1s ease forwards;
+  }
+
+  @keyframes animateDropdown {
+    0% {
+      transform: rotateX(90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  .nav_items ul li a {
+    width: 100%;
+    padding: 0 0.3rem;
+  }
+
+  .nav_items ul {
+    display: none;
+  }
+
+*/
+
+
+
+
+
+
+
+
+
 }

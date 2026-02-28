@@ -53,6 +53,7 @@
 
         <div class=" services_container">
             {% for service in services|slice:':4' %}
+            
             <div class="service">
                 <div class="service_image">
                     <img src="{{ service.service_image.url }}" alt="{{ service.service_title }} Image">
