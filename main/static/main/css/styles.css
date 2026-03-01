@@ -53,20 +53,19 @@
 }
 
 h1 {
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 1.9rem;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 p {
@@ -298,6 +297,7 @@ main {
   border: 0.1px solid rgb(71, 71, 71);
   transform-origin: center; /* ensures it scales from center */
   background-color: var(--text_color_variant);
+  overflow: hidden;
 }
 
 .index_service {
@@ -1304,34 +1304,34 @@ center p {
 /* ---------------- Media Queries  (Tablets)--------------------- */
 @media screen and (max-width: 1024px) {
 h1 {
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.7rem;
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 h4 {
-  font-size: .9rem;
+  font-size: 1.1rem;
 }
 
 p {
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 /* --------------------------------- Nav Section Styles ----------------------------------------------- */
 nav {
   padding: 0 2rem;
+  height: 2.5rem;
 }
 
 .nav_logo {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   overflow: hidden;
 }
 
@@ -1343,6 +1343,7 @@ nav {
 
 main {
   padding: 0 2rem;
+  margin-top: 2.5rem;
 }
 
 /* --------------------------------- Index Page Styles ----------------------------------------------- */
@@ -1477,15 +1478,34 @@ main {
 
 /* ----------------- Media Queries (Phones) ---------------------------------=*/
 @media screen and (max-width: 750px) {
+h1 {
+  font-size: 1.6rem;
+}
 
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  font-size: .95rem;
+}
 /* --------------------------------- Nav Section Styles ----------------------------------------------- */
 nav {
   padding: .2rem .2rem;
+  height: 2rem;
 }
 
 .nav_logo {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
 }
 .nav_menu_button {
   display: flex;             /* use flex container */
@@ -1497,16 +1517,20 @@ nav {
 }
 
 
+main {
+  margin-top: 2rem;
+}
+
   .menu_items {
     position: fixed;       /* fixed to viewport, not nav */
     top: 0;
-    margin-top: 3.5rem;
+    margin-top: 2rem;
     right: -100%;
     background-color: var(--deep_bg);
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 3rem 3rem;    /* leave space for top nav icons */
+    padding: 1.5rem 3rem;    /* leave space for top nav icons */
     transition: var(--transition);
     z-index: 300;          /* above nav */
     overflow-y: auto;      /* scroll if content is long */
@@ -1527,7 +1551,7 @@ nav {
 
 
   .menu_items ul li a {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .nav_menu_button {
@@ -1536,7 +1560,7 @@ nav {
   }
 
   .nav_menu_button i {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 
     .nav_menu_button i:hover {
@@ -1661,7 +1685,7 @@ main {
 /* --------------------------------- Contact Page Styles ----------------------------------------------- */
 .contact {
   grid-template-columns: 1fr;
-  padding: .2rem;
+  padding: 3rem .2rem;
 }
 
 
