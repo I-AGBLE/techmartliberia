@@ -87,9 +87,9 @@ nav {
   left: 0;
   width: 100%;
   z-index: 200;
-  height: 2.9rem;
+  height: 3.5rem;
   margin: 0;
-  padding: 0 10rem;
+  padding: 1rem 10rem;
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
@@ -105,8 +105,8 @@ nav:hover {
 }
 
 .nav_logo {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   overflow: hidden;
 }
 
@@ -364,7 +364,7 @@ main {
 
 .service_card:hover {
   cursor: pointer;
-  transform: scale(0.96);
+  transform: scale(0.98);
   border: 0.2px solid var(--text_color_variant);
   background-color: var(--nav_bg);
 }
@@ -404,7 +404,6 @@ main {
 .service_desc p {
   padding: 0.3rem;
   font-size: 1rem;
-  text-align: justify;
 }
 
 .service_page {
@@ -505,7 +504,7 @@ main {
 
 .team_member-image {
   width: 100%;
-  height: 9.5rem;
+  height: 8.5rem;
   overflow: hidden;
   object-fit: cover;
 }
@@ -609,6 +608,8 @@ main {
 
 .list {
   margin-bottom: 2rem;
+  display: grid;
+  gap: 1rem;
 }
 .list_content {
   display: flex;
@@ -622,9 +623,7 @@ main {
   color: var(--color_gold);
 }
 
-.list li {
-  margin-bottom: 0.5rem;
-}
+
 
 .list li a {
   display: block;
@@ -751,6 +750,7 @@ form textarea {
   width: 100%;
   height: 2.5rem;
   overflow: hidden;
+  border-radius: var(--border_radius);
 }
 
 .why_us_icon img {
@@ -767,7 +767,6 @@ form textarea {
 
 .why_us_text p {
   color: #cac7c7;
-  text-align: justify;
 }
 
 /* --------------------------------- Footer Page Styles ----------------------------------------------- */
@@ -1413,17 +1412,14 @@ main {
 }
 
 
-.list li {
-  margin-bottom: 0.5rem;
-}
-
 
 
 /* --------------------------------- About Page Styles ----------------------------------------------- */
-.why_us_icon {
-  border-radius: var(--border_radius);
-}
 
+
+.why_us_section {
+  padding: 2rem;
+}
 
 /* --------------------------------- User Dashboard Page Styles ----------------------------------------------- */
 .dashboard {
@@ -1533,7 +1529,188 @@ main {
 */
 
 
+/* --------------------------------- Nav Section Styles ----------------------------------------------- */
+nav {
+  padding: .2rem .2rem;
+}
 
+.nav_logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+
+main {
+  padding: 0 .2rem;
+}
+
+/* --------------------------------- Index Page Styles ----------------------------------------------- */
+.hero_section {
+  height: 30rem;
+}
+
+.hero_text {
+  padding: 0 .2rem;
+}
+
+
+.hero_text_body {
+  width: 85%;
+}
+
+/* --------------------------------- Catch Styles ----------------------------------------------- */
+.catchwords ul {
+  gap: 1rem;
+}
+
+
+/* --------------------------------- Services Page Styles ----------------------------------------------- */
+.service_cards {
+  grid-template-columns: 1fr;
+}
+
+.services_section {
+  padding: 2.5rem .2rem !important;
+}
+
+.service_title {
+  border-bottom: 0.1px solid rgb(71, 71, 71);
+  background-color: var(--nav_bg);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 8% 92%;
+  align-items: center;
+  padding: 0 .2rem;
+  justify-content: flex-start;
+}
+
+
+.service_card {
+  height: 8.5rem;
+}
+
+.service_image {
+  height: 12rem;
+}
+.service {
+  height: 12rem;
+}
+
+
+.service_icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+
+
+/* --------------------------------- Meet Our Team Styles ----------------------------------------------- */
+
+.team {
+  padding: 3rem .2rem;
+  background: linear-gradient(135deg, #141414, #302f2f, #1e1c1c);
+  background-size: 200% 200%;
+  animation: smoothShift 20s ease-in-out infinite;
+}
+
+
+.team_container {
+  grid-template-columns: repeat(2, 1fr);
+  gap: .2rem;
+}
+
+.team_member-info {
+  gap: .1rem;
+}
+
+.service_card {
+  height: 9.5rem;
+}
+
+
+.service_card:hover {
+  transform: scale(0.99);
+  border: 0.2px solid var(--text_color_variant);
+  background-color: var(--nav_bg);
+}
+
+
+.service_page {
+  margin: 3rem .1rem;
+  padding: 1.5rem .2rem;
+}
+
+.service_page_image {
+  height: 15rem;
+}
+
+/* --------------------------------- Contact Page Styles ----------------------------------------------- */
+.contact {
+  grid-template-columns: 1fr;
+  padding: .2rem;
+}
+
+
+.list {
+  margin-bottom: 1rem;
+}
+
+
+.contact-form {
+  margin-top: 1.5rem;
+}
+
+/* --------------------------------- About Page Styles ----------------------------------------------- */
+.why_us_icon {
+  border-radius: var(--border_radius);
+}
+
+.why_us_section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding: .2rem;
+  margin-top: 1.5rem;
+}
+
+
+
+/* --------------------------------- User Dashboard Page Styles ----------------------------------------------- */
+.form_field {
+  margin: 5rem .2rem;
+  padding: 1rem .2rem;
+  gap: 2rem;
+}
+
+
+.dashboard {
+  margin: 3rem auto;
+  gap: 5rem;
+}
+
+.admin_hero_section, .admin_service_item, .admin_about_hero_item {
+  grid-template-columns: 1fr;
+  padding: 1rem .2rem;
+}
+
+.admin_services, .admin_about_hero, .admin_team_members, .admin_why_us {
+  padding: 1rem .2rem;
+}
+
+.admin_about_hero_image {
+  height: 15rem;
+}
+
+
+.admin_team_members_container {
+  grid-template-columns: repeat(2, 1fr);
+  gap: .1rem;
+}
+
+.admin_why_us_container {
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+}
 
 
 

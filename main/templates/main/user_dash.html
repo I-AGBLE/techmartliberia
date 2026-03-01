@@ -18,12 +18,12 @@
 
 
     <div class="dashboard_title">
-        <h1>Welcome to the TechMart Liberia administrator dashboard, {{ user.username }}!</h1>
+        <h1>Welcome to the TechMart Liberia administrator dashboard, <span>{{ user.username }}</span>!</h1>
         <p>
             Here you can manage your services, view contact messages, and update your website content.
             Use the navigation menu to access different sections of the dashboard.
             If you have any questions or need assistance, please
-            <span> contact developer</span>.
+            <span> contact system administrator</span>.
         </p>
 
         <a href="{% url 'main:client_contact' %}" id="client_btn">Contacted List</a>
