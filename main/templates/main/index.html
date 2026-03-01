@@ -112,7 +112,7 @@
         </div>
 
         <div class="container team_container">
-            {% for member in team_members %}
+            {% for member in team_members|slice:':4' %}
             <article class="team_member">
                 <div class="team_member-image">
                     <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture">

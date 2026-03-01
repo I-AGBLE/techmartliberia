@@ -1166,12 +1166,16 @@ tbody tr:hover {
 
 .contact_detail_info {
   display: grid;
-  gap: .2rem;
+  gap: 2rem;
 }
 
-.contact_detail_info p {
-  margin-top: 1rem;
+.contact_detail_info_address {
+  display: grid;
+  gap: .5rem;
+    direction: rtl;      /* makes the content flow right-to-left */
+    text-align: right;   /* aligns the text to the right */
 }
+
 
 
 #client_btn {

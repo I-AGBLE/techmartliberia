@@ -1,12 +1,22 @@
 {% extends 'main/layout.html' %}
 
-{% block content %} 
+{% block content %}
 <div class="service_page">
     <div class="contact_detail_info">
-        <h4> {{ contact.name }}</h4>
-        <h4>{{ contact.tel }}</h4>
-        <h4> {{ contact.email }}</h4>
-        <p> {{ contact.message }}</p>
+        <div class="contact_detail_info_address">
+            <h2>
+                {{ contact.name }}
+            </h2>
+
+            <h4>
+                <a href="tel:{{ contact.tel }}">{{ contact.tel }}</a>
+            </h4>
+
+            <h4>
+                <a href="mailto:{{ contact.email }}" style="color: var(--color_gold);">{{ contact.email }}</a>
+            </h4>
+        </div>
+        <p> {{ contact.message|linebreaksbr }}</p>
     </div>
 </div>
 {% endblock %}

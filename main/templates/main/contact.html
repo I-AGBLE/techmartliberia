@@ -9,7 +9,7 @@
     </h1>
     {% for about in about_hero %}
     <p>
-        {{ about.about_hero_text_body}}
+        {{ about.about_hero_text_body|linebreaksbr}}
     </p>
     {% endfor %}
 </div>
