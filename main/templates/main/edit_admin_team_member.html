@@ -6,7 +6,7 @@
 
     <h2>Edit Team Member Details</h2>
 
-        {% if messages %}
+    {% if messages %}
     <ul class="messages">
         {% for message in messages %}
         <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
@@ -24,7 +24,7 @@
             placeholder="Enter Team Member Position" required>
         <input type="text" name="mandatory_field" id="mandatory_field" value="{{ member.mandatory_field }}"
             placeholder="This field is mandatory">
-        <input type="file" name="image" id="image">
+        <input type="file" name="image" id="image" accept=".jpeg,.jpg,.png,image/jpeg,image/png">
         {% if member.image %}
         <img src="{{ member.image.url }}" alt="{{ member.name }}'s Profile Picture" width=200 height=200 />
         {% endif %}

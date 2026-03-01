@@ -28,9 +28,10 @@
             placeholder="Enter Service Description"></textarea>
 
 
-        <input type="file" name="service_icon" id="service_icon">
+        <input type="file" name="service_icon" id="service_icon"
+            accept=".svg, .jpeg, .jpg, .png, image/svg+xml, image/jpeg,image/png">
 
-        <input type="file" name="service_image" id="service_image">
+        <input type="file" name="service_image" id="service_image" accept=".jpeg,.jpg,.png,image/jpeg,image/png">
 
         <input type="text" name="mandatory_field" id="mandatory_field" value="{{ member.mandatory_field }}"
             placeholder="This field is mandatory">

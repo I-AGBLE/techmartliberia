@@ -30,13 +30,16 @@
         <textarea name="service_description" id="service_description" placeholder="Enter Service Description"
             maxlength="5000">{{ service.service_description }}</textarea>
 
-        <input type="file" name="service_icon" id="service_icon">
+        <input type="file" name="service_icon" id="service_icon"
+            accept=".svg,.jpeg,.jpg,.png,image/svg+xml,image/jpeg,image/png">
+
         {% if service.service_icon %}
         <img src="{{ service.service_icon.url }}" alt="{{ service.service_title }}" width=200 height=200 />
         {% endif %}
 
 
-        <input type="file" name="service_image" id="service_image">
+        <input type="file" name="service_image" id="service_image" accept=".jpeg,.jpg,.png,image/jpeg,image/png">
+
         {% if service.service_image %}
         <img src="{{ service.service_image.url }}" alt="{{ service.service_title }}" width=200 height=200 />
         {% endif %}

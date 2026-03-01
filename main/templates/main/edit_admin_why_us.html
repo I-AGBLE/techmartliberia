@@ -24,7 +24,9 @@
         <input type="text" name="mandatory_field" id="mandatory_field" value="{{ why.mandatory_field }}"
             placeholder="This field is mandatory">
 
-        <input type="file" name="why_us_icon" id="why_us_icon">
+        <input type="file" name="why_us_icon" id="why_us_icon"
+            accept=".svg,.jpeg,.jpg,.png,image/svg+xml,image/jpeg,image/png">
+            
         {% if why.why_us_icon %}
         <div class="image_preview">
             <img src="{{ why.why_us_icon.url }}" alt="Current Icon Preview" width=200 height=200 />

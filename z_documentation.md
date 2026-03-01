@@ -8,9 +8,9 @@ Set fix icon size for services icons. Remarks **DONE**
 
 Set image size for why us icons and justify desc text content. Remarks = **DONE**
 
-Redesign individual client contact message details and add date and time to the bottom. Remarks = ?
+Redesign individual client contact message details and add date and time to the bottom. Remarks =  **DONE**
 
-Check whether all relevant HTML field have required image and input constraints. Remarks = ?
+Check whether all relevant HTML field have required image and input constraints. Remarks =  **DONE**
 
 Implement line breaks for front end. Remarks = ?
 
@@ -20,4 +20,4 @@ secret_key - 6Ld4HnksAAAAAKsi04QRjFM1vOla825Yk56PJePn
 
 
 
-limit team members on index page to 4 and all on about page 
+limit team members on index page to 4 and all on about page. Remarks = **DONE**

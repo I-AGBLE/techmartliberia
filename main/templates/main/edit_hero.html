@@ -29,7 +29,8 @@
         <textarea name="hero_text_body" id="hero_text_body" placeholder="Enter Hero Text" maxlength="650"
             required>{{ hero.hero_text_body }}</textarea>
 
-        <input type="file" name="hero_image" id="hero_image">
+        <input type="file" name="hero_image" id="hero_image" accept=".jpeg,.jpg,.png,image/jpeg,image/png">
+
         {% if hero.hero_image %}
         <img src="{{ hero.hero_image.url }}" alt="{{ hero.hero_text_title }}" width=200 height=200 />
         {% endif %}
