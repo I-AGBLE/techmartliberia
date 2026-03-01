@@ -93,7 +93,7 @@ nav {
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(20px);
   transition: var(--transition);
-  overflow: hidden;
+  overflow: visible;
 }
 
 span {
@@ -1478,68 +1478,6 @@ main {
 /* ----------------- Media Queries (Phones) ---------------------------------=*/
 @media screen and (max-width: 750px) {
 
-/*
-  .nav_btns {
-    display: block;
-    margin: 1rem 0;
-  }
-
-  .nav_btns btn {
-    display: inline-block;
-    font-size: 1.5rem;
-    color: var(--text_color);
-    cursor: pointer;
-    position: fixed;
-    top: 0.9%;
-    background-color: var(--color_blue);
-    border-radius: 0.2rem;
-    height: 1.5rem;
-
-    font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 1, "opsz" 60;
-  }
-
-  .nav_items ul {
-    position: absolute;
-    flex-direction: column;
-    top: 100%;
-    right: 0;
-    padding: 1rem 0.5rem;
-    background-color: var(--light_bg);
-    text-align: center;
-    justify-content: center;
-    gap: 1rem;
-    border-radius: 0.5rem;
-    margin-right: 0.7rem;
-    opacity: 0.95;
-  }
-
-  .nav_items ul li {
-    display: flex;
-    animation: animateDropdown 1s ease forwards;
-  }
-
-  @keyframes animateDropdown {
-    0% {
-      transform: rotateX(90deg);
-    }
-    100% {
-      transform: rotateX(0deg);
-      opacity: 1;
-    }
-  }
-
-  .nav_items ul li a {
-    width: 100%;
-    padding: 0 0.3rem;
-  }
-
-  .nav_items ul {
-    display: none;
-  }
-
-*/
-
-
 /* --------------------------------- Nav Section Styles ----------------------------------------------- */
 nav {
   padding: .2rem .2rem;
@@ -1549,7 +1487,72 @@ nav {
   width: 3rem;
   height: 3rem;
 }
+.nav_menu_button {
+  display: flex;             /* use flex container */
+  flex-direction: column;    /* stack children vertically */
+  justify-content: center;   /* center vertically if needed */
+  align-items: flex-start;   /* align to left, change to center if you want centered */
+  margin: 1rem 0;
+  gap: 0.5rem;               /* spacing between open and close icons */
+}
 
+
+  .menu_items {
+    position: fixed;       /* fixed to viewport, not nav */
+    top: 0;
+    margin-top: 3.5rem;
+    right: -100%;
+    background-color: var(--deep_bg);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 3rem 3rem;    /* leave space for top nav icons */
+    transition: var(--transition);
+    z-index: 300;          /* above nav */
+    overflow-y: auto;      /* scroll if content is long */
+    opacity: .91;
+  }
+
+  
+
+  .menu_items.active {
+    right: 0;
+  }
+
+  .menu_items ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+
+  .menu_items ul li a {
+    font-size: 1.2rem;
+  }
+
+  .nav_menu_button {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav_menu_button i {
+    font-size: 1.8rem;
+  }
+
+    .nav_menu_button i:hover {
+      color: var(--color_gold);
+    }
+  .open_menu {
+    display: block;
+  }
+
+  .close_menu {
+    display: none;
+  }
+
+  .close_menu i {
+    color: var(--color_danger);
+  }
 
 main {
   padding: 0 .2rem;
