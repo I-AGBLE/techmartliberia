@@ -6,7 +6,7 @@
 <div class="form_field">
 
     {% if error %}
-        <div class="error_message">{{ error }}</div>
+    <div class="error_message">{{ error }}</div>
     {% endif %}
 
     <div class="form_title">
@@ -15,19 +15,24 @@
         <p>
             Please enter your username and password to access the admin dashboard.
             If you have any issues logging in, please
-           <span> contact developer</span>.
+            <span> contact developer</span>.
         </p>
     </div>
 
 
     <form action="{% url 'main:user_in' %}" method="post">
         {% csrf_token %}
-       
+
         <input type="text" name="username" placeholder="Enter Username" autofocus required>
         <input type="password" name="password" placeholder="Enter Password" required>
         <input type="text" id="mandatory_field" name="mandatory_field" placeholder="This field is required">
-        
-        <input type="submit" class="submit" value="Login">
+
+        <div class="g-recaptcha" data-sitekey="6Ld4HnksAAAAAEA1WllgjmcvAxhHXV2yYyS-w6li" data-callback="enableSubmit">
+        </div>
+
+        <center>
+            <input type="submit" id="submit" value="Login" class="submit" disabled>
+        </center>
     </form>
 </div>
 
