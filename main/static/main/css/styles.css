@@ -833,7 +833,7 @@ form textarea {
 .dashboard {
   margin: 3rem 6.6rem;
   display: grid;
-  gap: 2rem;
+  gap: 5rem;
 }
 
 .dashboard_title {
@@ -1682,11 +1682,6 @@ main {
   gap: 2rem;
 }
 
-
-.dashboard {
-  margin: 3rem auto;
-  gap: 5rem;
-}
 
 .admin_hero_section, .admin_service_item, .admin_about_hero_item {
   grid-template-columns: 1fr;
