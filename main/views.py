@@ -733,3 +733,5 @@ def contact_detail(request, contact_id):
     return render(request, 'main/contact_detail.html', {
         'contact': contact
     })
+
+

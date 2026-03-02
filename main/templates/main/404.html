@@ -1,0 +1,10 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form_field">
+    <h1>Error 404</h1>
+    <p>Page Not Found!</p>
+    <a href="{% url 'main:index' %}">Return to Home Page!</a>
+</div>
+{% endblock %
